@@ -1,0 +1,141 @@
+programa
+{
+	inclua biblioteca Matematica --> m
+	inclua biblioteca Util --> u
+	
+	funcao inicio()
+	{
+		calculadora()
+	}
+	funcao calculadora()
+	{
+		real op = 0
+		inteiro res
+		escreva("Olá\n")
+		escreva("Deseja fazer que operação?\n")
+		escreva("==================||\n")
+		escreva("[1] Divisão       ||\n")
+		escreva("[2] Multiplicação ||\n")
+		escreva("[3] Subtração     ||\n")
+		escreva("[4] Adição        ||\n")
+		escreva("[5] Potência      ||\n")
+		escreva("[6] Raiz          ||\n")
+		escreva("==================||\n")
+		escreva("Qual operação deseja fazer: ")
+		leia(res)
+
+		
+		escolha(res)
+	   {
+		caso 1:
+			Div(op)
+		pare
+
+		caso 2:
+			Mult(op)
+		pare
+
+		caso 3:
+			Sub(op)
+		pare
+
+		caso 4:
+			Add(op)
+		pare
+
+		caso 5:
+			Pot(op)
+		pare
+
+		caso 6:
+			Raiz(op)
+		pare
+			
+		caso contrario:
+			escreva("Esta opção não está disponivel")
+			u.aguarde(2000)
+			limpa()
+			inicio()
+		pare
+	   }
+	   escreva("O valor da operação é: ", op)
+	}
+	funcao real Div(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe o numero que vai ser dividido: ")
+		leia(x)
+		escreva("Informe o numero que vai dividir: ")
+		leia(y)
+		limpa()
+		op = x/y
+		retorne op
+	}
+	funcao real Mult(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		op = x*y
+		retorne op
+	}
+	funcao real Sub(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe o numero que vai ser subtraido: ")
+		leia(x)
+		escreva("Informe o numero que vai subtrair: ")
+		leia(y)
+		limpa()
+		op = x-y
+		retorne op
+	}
+	funcao real Add(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		op = x+y
+		retorne op
+	}
+	funcao real Pot(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe a base da potência: ")
+		leia(x)
+		escreva("Informe o expoente da potência: ")
+		leia(y)
+		limpa()
+		op = m.potencia(x, y)
+		retorne op
+	}
+	funcao real Raiz(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe o radicando da raiz: ")
+		leia(x)
+		escreva("Informe o indice da raiz: ")
+		leia(y)
+		limpa()
+		op = m.raiz(x, y)
+		retorne op
+	}
+}
