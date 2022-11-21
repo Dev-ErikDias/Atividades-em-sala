@@ -1,0 +1,20 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		real litros = 0
+		nome_da_funcao(636, litros)
+		escreva("Serão necessarios ", litros, " litros de gasolina para percorrer o percurso de 636km")
+		escreva("\n")
+		nome_da_funcao(940, litros)
+		escreva("Serão necessarios ", litros, " litros de gasolina para percorrer o percurso de 940km")
+	}
+	funcao real nome_da_funcao(real dist, real &litros)
+	{
+		litros = dist / 50
+
+		retorne litros 
+		
+	}
+}
