@@ -1,0 +1,147 @@
+programa
+{
+	inclua biblioteca Util
+ --> u
+	
+	funcao inicio()
+	{
+		calculadora()
+	}
+	funcao calculadora()
+	{
+		inteiro res
+		escreva("Olá\n")
+		escreva("Deseja fazer que operação?\n")
+		escreva("==================||\n")
+		escreva("[1] Divisão       ||\n")
+		escreva("[2] Multiplicação ||\n")
+		escreva("[3] Subtração     ||\n")
+		escreva("[4] Adição        ||\n")
+		escreva("==================||\n")
+		escreva("Qual operação deseja fazer: ")
+		leia(res)
+
+		escolha(res)
+	   {
+		caso 1:
+			Div()
+		pare
+
+		caso 2:
+			Mult()
+		pare
+
+		caso 3:
+			Sub()
+		pare
+
+		caso 4:
+			Add()
+		pare
+
+		caso contrario:
+			escreva("Esta opção não está disponivel")
+			u.aguarde(2000)
+			limpa()
+			inicio()
+		pare
+	   }
+	}
+	funcao Div()
+	{
+		limpa()
+		inteiro x
+		inteiro y
+		cadeia res
+		escreva("Informe o numero que vai ser dividido: ")
+		leia(x)
+		escreva("Informe o numero que vai dividir: ")
+		leia(y)
+		limpa()
+		escreva("O resultado da divisão é: ", x/y)
+		escreva("\nDeseja sair ou fazer outra divisão?")
+		leia(res)
+		se(res == "sair")
+		{
+			limpa()
+			inicio()
+		}
+		senao se(res == "div")
+		{
+			Div()
+		}
+	}
+	funcao Mult()
+	{
+		limpa()
+		inteiro x
+		inteiro y
+		cadeia res
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		escreva("O resultado da multiplicação é: ", x*y)
+		escreva("\nDeseja sair ou fazer outra multiplicação?")
+		leia(res)
+		se(res == "sair")
+		{
+			limpa()
+			inicio()
+		}
+		senao se(res == "mult")
+		{
+			Mult()
+		}
+	}
+	funcao Sub()
+	{
+		limpa()
+		inteiro x
+		inteiro y
+		cadeia res
+		escreva("Informe o numero que vai ser subtraido: ")
+		leia(x)
+		escreva("Informe o numero que vai subtrair: ")
+		leia(y)
+		limpa()
+		escreva("O resultado da subtração é: ", x-y)
+		escreva("\nDeseja sair ou fazer outra subtração?")
+		leia(res)
+		se(res == "sair")
+		{
+			limpa()
+			inicio()
+		}
+		senao se(res == "sub")
+		{
+			Sub()
+		}
+	}
+	funcao Add()
+	{
+		limpa()
+		inteiro x
+		inteiro y
+		cadeia res
+		limpa()
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		escreva("O resultado da adição é: ", x+y)
+		escreva("\nDeseja sair ou fazer outra adição?")
+		leia(res)
+		se(res == "sair")
+		{
+			limpa()
+			inicio()
+		}
+		senao se(res == "add")
+		{
+			Add()
+		}
+	}
+}
