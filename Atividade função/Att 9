@@ -1,0 +1,42 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		logico ver = falso
+		real a
+		real b
+		real c
+		escreva("Informe os valores de um triangulo")
+		leia(a, b, c)
+		triangulo(a, b, c, ver)
+		se(ver == verdadeiro)
+		{
+			escreva("Os valores informados formam um triangulo")
+		}
+		senao
+		{
+			escreva("Os valores informados não formam um triangulo")
+		}
+	}
+	funcao logico triangulo(real a, real b, real c, logico &ver)
+	{
+		se((b-c)<a e a<(b+c))
+		{
+			ver = verdadeiro
+		}
+		senao se((a-c)<b e b<(a+c))
+		{
+			ver = verdadeiro
+		}
+		senao se((a-b)<c e c<(a+b))
+		{
+			ver = verdadeiro
+		}
+		senao
+		{
+			ver = falso
+		}
+		retorne ver
+	}
+}
