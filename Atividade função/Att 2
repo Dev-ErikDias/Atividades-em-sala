@@ -1,0 +1,15 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		cadeia nome 
+		obrigadoAmigo("Jefferson")
+		escreva("\n")
+		obrigadoAmigo("Neymar")
+	}
+	funcao obrigadoAmigo(cadeia nome)
+	{
+		escreva("Obrigado ", nome, ", você é um amigo")
+	}
+}
