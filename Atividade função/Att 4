@@ -1,0 +1,25 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		verificaLatido("Bob", 20)
+		escreva("\n")
+		verificaLatido("Laika", 17.9)
+		escreva("\n")
+		verificaLatido("Chica", 1.1)
+		escreva("\n")
+		verificaLatido("Walter Geoffrey", 13)
+	}
+	funcao verificaLatido(cadeia nome, real peso)
+	{
+		se(peso < 15)
+		{
+			escreva(nome, " late au au")
+		}
+		senao
+		{
+			escreva(nome, " late woof woof")
+		}
+	}
+}
