@@ -1,0 +1,106 @@
+programa
+{
+	inclua biblioteca Util
+ --> u
+	
+	funcao inicio()
+	{
+		calculadora()
+	}
+	funcao calculadora()
+	{
+		real op = 0
+		inteiro res
+		escreva("Olá\n")
+		escreva("Deseja fazer que operação?\n")
+		escreva("==================||\n")
+		escreva("[1] Divisão       ||\n")
+		escreva("[2] Multiplicação ||\n")
+		escreva("[3] Subtração     ||\n")
+		escreva("[4] Adição        ||\n")
+		escreva("==================||\n")
+		escreva("Qual operação deseja fazer: ")
+		leia(res)
+
+		
+		escolha(res)
+	   {
+		caso 1:
+			Div(op)
+		pare
+
+		caso 2:
+			Mult(op)
+		pare
+
+		caso 3:
+			Sub(op)
+		pare
+
+		caso 4:
+			Add(op)
+		pare
+
+		caso contrario:
+			escreva("Esta opção não está disponivel")
+			u.aguarde(2000)
+			limpa()
+			inicio()
+		pare
+	   }
+	   escreva("O valor da operação é: ", op)
+	}
+	funcao real Div(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe o numero que vai ser dividido: ")
+		leia(x)
+		escreva("Informe o numero que vai dividir: ")
+		leia(y)
+		limpa()
+		op = x/y
+		retorne op
+	}
+	funcao real Mult(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		op = x*y
+		retorne op
+	}
+	funcao real Sub(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe o numero que vai ser subtraido: ")
+		leia(x)
+		escreva("Informe o numero que vai subtrair: ")
+		leia(y)
+		limpa()
+		op = x-y
+		retorne op
+	}
+	funcao real Add(real &op)
+	{
+		limpa()
+		real x
+		real y
+		escreva("Informe um numero: ")
+		leia(x)
+		escreva("Informe outro numero: ")
+		leia(y)
+		limpa()
+		op = x+y
+		retorne op
+	}
+}
+Footer
