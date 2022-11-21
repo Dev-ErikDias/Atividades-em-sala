@@ -1,0 +1,26 @@
+programa
+{
+	inclua biblioteca Matematica --> m
+	
+	funcao inicio()
+	{
+		real vr = 0
+		real c1
+		real c2
+		escreva("Informe o numero de um dos catetos")
+		leia(c1)
+		escreva("Informe o numero do outro cateto")
+		leia(c2)
+		hipotenusa(c1, c2, vr)
+		escreva("A hipotenusa é: ", vr)
+	}
+	funcao real hipotenusa(real c1, real c2, real &vr)
+	{
+		real cr1 = m.potencia(c1, 2)
+		real cr2 = m.potencia(c2, 2)
+		vr = cr1 + cr2
+		vr = m.raiz(vr, 2)
+
+		retorne vr
+	}
+}
