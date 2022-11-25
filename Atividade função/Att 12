@@ -1,0 +1,25 @@
+programa
+{
+	inclua biblioteca Texto --> tx
+	
+	funcao inicio()
+	{
+		cadeia n
+		escreva("Informe um numero qualquer")
+		leia(n)
+		reverse(n)
+		escreva("O valor ao contrário é: ", n)
+	}
+	funcao cadeia reverse(cadeia &n)
+	{	
+		cadeia z = ""
+		inteiro x = tx.numero_caracteres(n)
+		caracter y
+		para(inteiro i=x- 1; i >= 0; i--){
+			y = tx.obter_caracter(n, i)
+			z += y
+		}
+		n = z
+		retorne n
+	}
+}
