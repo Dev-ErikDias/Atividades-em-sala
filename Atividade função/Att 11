@@ -1,0 +1,21 @@
+programa
+{
+	inclua biblioteca Texto
+ --> tx
+	
+	funcao inicio()
+	{
+		inteiro n = 0
+		cadeia x
+		escreva("Informe um numero qualquer: ")
+		leia(x)
+		numeroDigito(n, x)
+		escreva("O numero de digitos é: ", n)
+	}
+	funcao inteiro numeroDigito(inteiro &n, cadeia &x)
+	{
+		n = tx.numero_caracteres(x)
+
+		retorne n
+	}
+}
