@@ -5,8 +5,7 @@ programa
 	funcao inicio()
 	{
 		real vr = 0
-		real c1
-		real c2
+		real c1, c2
 		escreva("Informe o numero de um dos catetos")
 		leia(c1)
 		escreva("Informe o numero do outro cateto")
