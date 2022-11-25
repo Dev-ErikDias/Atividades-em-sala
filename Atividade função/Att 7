@@ -63,8 +63,7 @@ programa
 	funcao real Div(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe o numero que vai ser dividido: ")
 		leia(x)
 		escreva("Informe o numero que vai dividir: ")
@@ -76,8 +75,7 @@ programa
 	funcao real Mult(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe um numero: ")
 		leia(x)
 		escreva("Informe outro numero: ")
@@ -89,8 +87,7 @@ programa
 	funcao real Sub(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe o numero que vai ser subtraido: ")
 		leia(x)
 		escreva("Informe o numero que vai subtrair: ")
@@ -102,8 +99,7 @@ programa
 	funcao real Add(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe um numero: ")
 		leia(x)
 		escreva("Informe outro numero: ")
@@ -115,8 +111,7 @@ programa
 	funcao real Pot(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe a base da potência: ")
 		leia(x)
 		escreva("Informe o expoente da potência: ")
@@ -128,8 +123,7 @@ programa
 	funcao real Raiz(real &op)
 	{
 		limpa()
-		real x
-		real y
+		real x, y
 		escreva("Informe o radicando da raiz: ")
 		leia(x)
 		escreva("Informe o indice da raiz: ")
