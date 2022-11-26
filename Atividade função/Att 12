@@ -5,7 +5,7 @@ programa
 	funcao inicio()
 	{
 		cadeia n
-		escreva("Informe um numero qualquer")
+		escreva("Informe um numero qualquer: ")
 		leia(n)
 		reverse(n)
 		escreva("O valor ao contrário é: ", n)
