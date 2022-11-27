@@ -1,0 +1,17 @@
+programa
+{
+	inclua biblioteca Util
+ --> u
+	
+	funcao inicio()
+	{
+		inteiro res =0
+		dado(res)
+		escreva("O numero do dado foi: ", res)
+	}
+	funcao inteiro dado(inteiro &res)
+	{
+		res = u.sorteia(1,6)
+		retorne res
+	}
+}
