@@ -1,0 +1,36 @@
+programa
+{
+	
+	funcao inicio()
+	{
+	
+		inteiro numeros[5] = {2, 25, 35, 1, 10}
+		inteiro s =0
+		soma(numeros, s)
+		para(inteiro i=0; i < 5; i++){
+			se(i<4)
+			{	
+				escreva(numeros[i], " - ")
+			}
+			senao
+			{
+				escreva(numeros[i])
+			}
+		}
+	}
+	funcao inteiro soma(inteiro &numeros[], inteiro s)
+	{
+		para(inteiro i=0; i < 5; i++){
+
+			para(inteiro j=0; j < 4; j++){
+				se(numeros[j] > numeros[j + 1])
+				{
+					s = numeros[j]
+					numeros[j] = numeros[j+1]
+					numeros[j+1] = s
+				}
+			}
+		}
+		retorne numeros[1]
+	}
+}
