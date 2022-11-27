@@ -1,0 +1,33 @@
+programa
+{
+	
+	funcao inicio()
+	{
+	
+		inteiro numeros[5]
+		inteiro s =0
+		para(inteiro i=0; i < 5; i++){
+			se(i < 1)
+			{
+			escreva("Informe um numero: ")
+			leia(numeros[i])
+			}
+			senao
+			{
+			escreva("Informe outro numero: ")
+			leia(numeros[i])
+			}
+		}
+		soma(numeros, s)
+		escreva("O resultado da soma é: ", s)
+	}
+	funcao inteiro soma(inteiro numeros[], inteiro &s)
+	{
+		para(inteiro i=0; i < 5; i++)
+		{
+			s += numeros[i] 
+		}
+
+		retorne s
+	}
+}
