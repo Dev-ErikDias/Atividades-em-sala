@@ -1,0 +1,33 @@
+programa
+{
+	inclua biblioteca Matematica --> m
+	
+	funcao inicio()
+	{
+	
+		inteiro numeros[5]
+		inteiro m =0
+		para(inteiro i=0; i < 5; i++){
+			se(i < 1)
+			{
+			escreva("Informe um numero: ")
+			leia(numeros[i])
+			}
+			senao
+			{
+			escreva("Informe outro numero: ")
+			leia(numeros[i])
+			}
+		}
+		maior(numeros, m)
+		escreva("O maior entre os numeros é: ", m)
+	}
+	funcao inteiro maior(inteiro numeros[], inteiro &m)
+	{
+		para(inteiro i=0; i < 4; i++){
+			m = m.maior_numero(numeros[i], numeros[i+1])
+		}
+
+		retorne m
+	}
+}
