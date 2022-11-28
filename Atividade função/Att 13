@@ -1,0 +1,37 @@
+programa {
+  inclua biblioteca Util-->u
+  funcao inicio() {
+    inteiro nv=0
+    inteiro pcara=0 
+    inteiro pcoroa=0
+    cadeia sorte=""
+    inteiro nvj=0
+    inteiro st=0
+    escreva("Informe quantas vezes quer jogar: ")
+    leia(nv)
+    nvj=nv
+    para(inteiro i=0;i<nv;i++){
+        dados(sorte,pcara,pcoroa,st)
+        escreva(dados(sorte,pcara,pcoroa,st),"\n")
+        
+    }  
+    real results1 =pcara*50/nvj
+    escreva("\n porcentagem de vezes que saiu cara:",results1)
+    real results2 =pcoroa*50/nvj
+    escreva("\n porcentagem de vezes que saiu coroa:",results2)
+  }
+  funcao cadeia dados(cadeia sorte ,inteiro &pcara , inteiro &pcoroa,inteiro st){
+ 
+    st = u.sorteia(0,1)
+    
+    se(st % 2== 0){
+      sorte = "coroa"
+      pcoroa=pcoroa+1
+    }
+    se(st % 2==1){
+      sorte = "cara"
+      pcara=pcara+1
+    }
+    retorne sorte
+    }
+}
