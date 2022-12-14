@@ -1,0 +1,80 @@
+programa
+{
+	inclua biblioteca Util
+-->u
+	
+	funcao inicio()
+	{
+	     inteiro dezena=15
+	     inteiro dezenas_s[15]
+	     inteiro mn = 60
+		
+		para(inteiro i=0; i < 100; i++){
+            sorteio( dezena, mn , dezenas_s)
+            escreva("\n")
+		}
+		
+		
+	}
+
+	funcao sorteio(inteiro dezena,inteiro mn,inteiro dezenas_s[]){
+
+		
+		inteiro n=0
+		logico v=verdadeiro
+
+            para(inteiro i=0; i < dezena; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==dezenas_s[k]){
+                 	v=falso
+                 	pare
+                 }senao{
+                 	v=verdadeiro
+                 }
+		                                       }      
+            		
+            	}enquanto(v==falso)
+            	
+
+		
+
+           
+                dezenas_s[i]=n
+                
+		}
+         para(inteiro l=0; l < dezena; l++){
+
+            para(inteiro j=1; j < dezena; j++){
+
+			se(dezenas_s[j]<dezenas_s[j-1]){
+		       n=dezenas_s[j]
+		       dezenas_s[j]=dezenas_s[j-1]
+		       dezenas_s[j-1]=n
+			}
+
+              
+		}
+		
+     
+
+		}
+
+          para(inteiro m=0; m < dezena; m++){
+             escreva(dezenas_s[m],"--")
+             
+		}
+
+		
+		
+
+
+		
+	}
+	
+}
