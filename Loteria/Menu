@@ -1,1 +1,54 @@
+programa
+{
+	inclua biblioteca Util
+ --> u
+	
+	funcao inicio()
+	{
+		menu()
+	}
 
+	funcao vazio menu()
+	{
+		inteiro opcao 
+		escreva("||*****************||\n")
+		escreva("|| [1] - Mega Sena ||\n")
+		escreva("|| [2] - Quina     ||\n")
+		escreva("|| [3] - Lotomania ||\n")
+		escreva("|| [4] - Lotofácil ||\n")
+		escreva("||*****************||\n")
+		escreva("Qual jogo deseja jogar?\n")
+		leia(opcao)
+		escolha(opcao){
+
+			caso 1: 
+				limpa()
+				escreva(1)
+			pare
+
+			
+			caso 2: 
+				limpa()
+				escreva(2)
+			pare
+				
+			caso 3:
+				limpa()
+				escreva(3)
+			pare
+
+			caso 4:
+				limpa()
+				escreva(4)
+			pare
+			
+			caso contrario: 
+				limpa()
+				escreva("Essa opção não é valida")
+				u.aguarde(1000)
+				limpa()
+				menu()
+			pare
+		}
+	}
+}
