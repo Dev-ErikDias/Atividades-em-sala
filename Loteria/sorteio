@@ -7,12 +7,7 @@ programa
 	     inteiro dezena=15
 	     inteiro dezenas_s[15]
 	     inteiro mn = 60
-		
-		para(inteiro i=0; i < 100; i++){
-            sorteio( dezena, mn , dezenas_s)
-            escreva("\n")
-		}
-		
+          sorteio( dezena, mn , dezenas_s)
 		
 	}
 
@@ -65,7 +60,14 @@ programa
 		}
 
           para(inteiro m=0; m < dezena; m++){
-             escreva(dezenas_s[m],"--")
+             se(m == dezena-1)
+             {
+             	escreva(dezenas_s[m])
+             }
+             senao
+             {
+             	escreva(dezenas_s[m],"--")
+             }
              
 		}
 
