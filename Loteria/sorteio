@@ -4,16 +4,23 @@ programa
 	
 	funcao inicio()
 	{
+          
+          
 	     inteiro dezena=15
-	     inteiro dezenas_s[15]
+	     
 	     inteiro mn = 60
-          sorteio( dezena, mn , dezenas_s)
+
+	     para(inteiro z=0; z < 100; z++){
+
 		
+          sorteio( dezena, mn)
+          escreva("\n")
+	     }
 	}
 
-	funcao sorteio(inteiro dezena,inteiro mn,inteiro dezenas_s[]){
+	funcao sorteio(inteiro dezena,inteiro mn){
 
-		
+		inteiro dezenas_s[100]
 		inteiro n=0
 		logico v=verdadeiro
 
