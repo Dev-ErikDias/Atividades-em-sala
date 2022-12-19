@@ -1,0 +1,195 @@
+programa
+{
+	inclua biblioteca Util
+ --> u
+	
+	funcao inicio()
+	{
+		menu()
+	}
+
+	funcao vazio menu()
+	{
+		inteiro opcao 
+		escreva("||*****************||\n")
+		escreva("|| [1] - Mega Sena ||\n")
+		escreva("|| [2] - Quina     ||\n")
+		escreva("|| [3] - Lotomania ||\n")
+		escreva("|| [4] - Lotofácil ||\n")
+		escreva("||*****************||\n")
+		escreva("Qual jogo deseja jogar?\n")
+		leia(opcao)
+		escolha(opcao){
+
+			caso 1: 
+				limpa()
+				Mega_sena()
+			pare
+
+			
+			caso 2: 
+				limpa()
+				Quina()
+			pare
+				
+			caso 3:
+				limpa()
+				Lotomania()
+			pare
+
+			caso 4:
+				limpa()
+			    Lotofacil()
+			pare
+			
+			caso contrario: 
+				limpa()
+				escreva("Essa opção não é valida")
+				u.aguarde(1000)
+				limpa()
+				menu()
+			pare
+		}
+	}
+	funcao Mega_sena()
+	{
+	    inteiro min = 6
+	    inteiro max = 20
+	    inteiro mn = 60
+	    apostador(min, max, mn)
+	}
+	funcao Quina()
+	{
+	    inteiro min = 5
+	    inteiro max = 15
+	    inteiro mn = 80
+	    apostador(min, max, mn)
+	}
+	funcao Lotomania()
+	{
+	    inteiro min = 50
+	    inteiro max = 50
+	    inteiro mn = 100
+	    inteiro apostas 
+	    escreva("Este jogo esta limitado à 50 dezenas como minimo e maximo\n")
+	    escreva("Quantas apostas deseja fazer?\n")
+	    leia(apostas)
+	    para(inteiro z=0; z < apostas; z++){
+
+		
+          sorteio( 50, mn)
+          escreva("\n")
+	     }
+	}
+	funcao Lotofacil()
+	{
+	    inteiro min = 15
+	    inteiro max = 20
+	    inteiro mn = 25
+	    apostador(min, max, mn)
+	    
+	    
+	}
+	
+	
+	funcao apostador(inteiro min, inteiro max, inteiro mn)
+	{
+	    inteiro apostas
+	    inteiro dezena
+	    faca{
+	    escreva("Quantas apostas deseja fazer?\n")
+	    leia(apostas)
+    	    se(apostas < 1)
+    	    {
+    	        escreva("Numero minimo não atingido (1)\n")
+    	    }
+	    }enquanto(apostas < 1)
+	    
+	    faca{
+	    escreva("Quantas dezenas deseja girar?\n")
+	    leia(dezena)
+	    
+	        se(dezena < min ou dezena> max)
+    	    {
+    	        escreva("Numero minimo não atingido (", min, ")\n")
+    	    }
+    	    se(dezena> max)
+    	    {
+    	        escreva("Numero maximo excedido (", max, ")\n")
+    	    }
+	    }enquanto(dezena < min ou dezena > max)
+	   
+	    para(inteiro z=0; z < apostas; z++){
+
+		
+          sorteio( dezena, mn)
+          escreva("\n")
+	     }
+	}
+	funcao sorteio(inteiro dezena,inteiro mn){
+
+		inteiro dezenas_s[100]
+		inteiro n=0
+		logico v=verdadeiro
+
+            para(inteiro i=0; i < dezena; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==dezenas_s[k]){
+                 	v=falso
+                 	pare
+                 }senao{
+                 	v=verdadeiro
+                 }
+		                                       }      
+            		
+            	}enquanto(v==falso)
+            	
+
+		
+
+           
+                dezenas_s[i]=n
+                
+		}
+         para(inteiro l=0; l < dezena; l++){
+
+            para(inteiro j=1; j < dezena; j++){
+
+			se(dezenas_s[j]<dezenas_s[j-1]){
+		       n=dezenas_s[j]
+		       dezenas_s[j]=dezenas_s[j-1]
+		       dezenas_s[j-1]=n
+			}
+
+              
+		}
+		
+     
+
+		}
+
+          para(inteiro m=0; m < dezena; m++){
+             se(m == dezena-1)
+             {
+             	escreva(dezenas_s[m])
+             }
+             senao
+             {
+             	escreva(dezenas_s[m],"--")
+             }
+             
+		}
+
+		
+		
+
+
+		
+	}
+}
