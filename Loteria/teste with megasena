@@ -128,7 +128,7 @@ programa
           sorteio( dezena, mn)
           escreva("\n")
 	     }
-        valor( min, precos[], apostas, dezena)
+        valor( min, precos, apostas, dezena)
 	     
 	}
 	funcao sorteio(inteiro dezena,inteiro mn){
