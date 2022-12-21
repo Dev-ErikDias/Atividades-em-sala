@@ -64,7 +64,8 @@ programa
 	    inteiro min = 5
 	    inteiro max = 15
 	    inteiro mn = 80
-	    apostador(min, max, mn)
+      real precos[11]={ 2.00, 12.00, 42.00,112.00, 252.00,  504.00,  924.00, 1584.00, 2574.00, 4004.00, 6006.00}
+	    apostador(min, max, mn, precos)
 	}
 	funcao Lotomania()
 	{
@@ -81,13 +82,19 @@ programa
           sorteio( 50, mn)
           escreva("\n")
 	     }
+        se(apostas>1){
+	        escreva("\ncada jogo custa:1.50")
+	    }
+	    escreva("\nvalor a ser pago:",1.50*apostas)
+
 	}
 	funcao Lotofacil()
 	{
 	    inteiro min = 15
 	    inteiro max = 20
 	    inteiro mn = 25
-	    apostador(min, max, mn)
+      real precos[4]={2.50,  40.00, 340.00,  2040.00}
+	    apostador(min, max, mn, precos)
 	     
 	    
 	    
