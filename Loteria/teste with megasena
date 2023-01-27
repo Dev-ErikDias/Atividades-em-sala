@@ -53,7 +53,7 @@ programa
 	funcao Mega_sena()
 	{
 	    inteiro min = 6
-	    inteiro max = 20
+	    inteiro max = 15
 	    inteiro mn = 60
 	    real precos[10]={4.50, 31.50,126.00,378.00, 945.00, 2079.00,4158.00, 7722.00,13513.50,22522.50}
 	    apostador(min, max, mn, precos)
