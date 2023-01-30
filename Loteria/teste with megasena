@@ -1,4 +1,4 @@
-programa
+pprograma
 {
 	inclua biblioteca Util--> u
 	
@@ -83,9 +83,9 @@ programa
           escreva("\n")
 	     }
         se(apostas>1){
-	        escreva("\ncada jogo custa:1.50")
+	        escreva("\nCada jogo custa:1.50")
 	    }
-	    escreva("\nvalor a ser pago:",1.50*apostas)
+	    escreva("\nValor a ser pago:",1.50*apostas)
 
 	}
 	funcao Lotofacil()
@@ -118,7 +118,7 @@ programa
 	    escreva("Quantas dezenas deseja girar?\n")
 	    leia(dezena)
 	    
-	        se(dezena < min ou dezena> max)
+	        se(dezena < min)
     	    {
     	        escreva("Numero minimo não atingido (", min, ")\n")
     	    }
@@ -208,9 +208,10 @@ programa
 	funcao valor(inteiro min,real precos[],inteiro apostas,inteiro dezena)
 	{
 	    se(apostas>1){
-	        escreva("\ncada jogo custa:", precos[dezena-min])
+	        escreva("\nCada jogo custa:", precos[dezena-min])
 	    }
-	    escreva("\nvalor a ser pago:",precos[dezena-min]*apostas)
+	    escreva("\nValor a ser pago:",precos[dezena-min]*apostas)
+	   	 
 	    
 	    
 	}
