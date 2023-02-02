@@ -1,7 +1,7 @@
 programa
 {
 	inclua biblioteca Util--> u
-	
+
 	funcao inicio()
 	{
 		menu()
@@ -52,11 +52,22 @@ programa
 	}
 	funcao Mega_sena()
 	{
+	    cadeia res
 	    inteiro min = 6
 	    inteiro max = 15
 	    inteiro mn = 60
 	    real precos[10]={4.50, 31.50,126.00,378.00, 945.00, 2079.00,4158.00, 7722.00,13513.50,22522.50}
-	    apostador(min, max, mn, precos)
+	    escreva("Deseja escolher os numeros?\n")
+	    leia(res)
+	    se(res == "sim")
+	    {
+	    	  limpa()
+	       apostador_man(min, max, mn)
+	    }
+	    senao{
+            limpa()
+	       apostador(min, max, mn, precos)
+	    }
 	    
 	}
 	funcao Quina()
@@ -138,6 +149,63 @@ programa
         valor( min, precos, apostas, dezena)
 	     
 	}
+	funcao apostador_man(inteiro min, inteiro max, inteiro mn, inteiro gan){
+		inteiro v = 0
+		inteiro m
+		inteiro n
+		inteiro par
+		inteiro escolhidos[15]
+		inteiro sortear[100]
+		
+		
+		faca{
+		escreva("Quantos numeros você vai jogar: ")
+		leia(m)
+			se(m < min)
+			{
+				escreva("Numero minimo não atingido (", min, ")\n")
+			}
+			senao se(m > max)
+			{
+				escreva("Numero maximo (", max, ")\n")
+			}
+			limpa()
+		}enquanto(m < min ou m > max)
+		
+			para(inteiro i=0; i < m; i++){
+				escreva("Escolha um numero: ")
+				leia(n)
+				escolhidos[i] = n
+
+					para(inteiro j=0; j < i; j++){
+						se(escolhidos[i] == escolhidos[j])
+						{
+							escreva("Esse numero ja foi selecionado")
+							i--
+							u.aguarde(1000)
+						}
+	}
+				limpa()
+			}
+
+			para(inteiro i=0; i < m; i++){
+				
+					para(inteiro j=0; j < 6; j++){
+						se(escolhidos[i] == sortear[j])
+						{
+							v++
+							pare
+						}
+					}
+			}
+			se(v == 6)	
+			{
+				escreva("DEU CERTO!!")
+			}
+			senao{
+				escreva("NÃO DEU CERTO :(")
+			}
+	}
 	funcao sorteio(inteiro dezena,inteiro mn){
 
 		inteiro dezenas_s[100]
@@ -158,7 +226,7 @@ programa
                  }senao{
                  	v=verdadeiro
                  }
-		                                       }      
+		   }      
             		
             	}enquanto(v==falso)
             	
