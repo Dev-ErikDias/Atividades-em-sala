@@ -52,6 +52,7 @@ programa
 	}
 	funcao Mega_sena()
 	{
+	    inteiro gan = 6
 	    cadeia res
 	    inteiro min = 6
 	    inteiro max = 15
@@ -62,60 +63,108 @@ programa
 	    se(res == "sim")
 	    {
 	    	  limpa()
-	       apostador_man(min, max, mn)
+	       apostador_man(min, max, mn, gan, precos)
 	    }
 	    senao{
             limpa()
-	       apostador(min, max, mn, precos)
+	       apostador(min, max, mn, precos, gan)
 	    }
 	    
 	}
 	funcao Quina()
 	{
+	    cadeia res
+	    inteiro gan = 5
 	    inteiro min = 5
 	    inteiro max = 15
 	    inteiro mn = 80
-      real precos[11]={ 2.00, 12.00, 42.00,112.00, 252.00,  504.00,  924.00, 1584.00, 2574.00, 4004.00, 6006.00}
-	    apostador(min, max, mn, precos)
+         real precos[11]={ 2.00, 12.00, 42.00,112.00, 252.00,  504.00,  924.00, 1584.00, 2574.00, 4004.00, 6006.00}
+	    escreva("Deseja escolher os numeros?\n")
+	    leia(res)
+	    se(res == "sim")
+	    {
+	    	  limpa()
+	       apostador_man(min, max, mn, gan, precos)
+	    }
+	    senao{
+            limpa()
+	       apostador(min, max, mn, precos, gan)
+	    }
 	}
 	funcao Lotomania()
 	{
+	    inteiro sortear[1] = {0}
+	    cadeia res
+	    inteiro gan = 20
 	    inteiro min = 50
 	    inteiro max = 50
 	    inteiro mn = 100
 	    inteiro apostas 
+	    real precos[1] = {1.50}
 	    escreva("Este jogo esta limitado à 50 dezenas como minimo e maximo\n")
-	    escreva("Quantas apostas deseja fazer?\n")
-	    leia(apostas)
-	    para(inteiro z=0; z < apostas; z++){
+	    escreva("Deseja escolher os numeros?\n")
+	    leia(res)
+	    se(res == "sim")
+	    {
+	    	  limpa()
+	       apostador_man(min, max, mn, gan, precos)
+	    }
+	    senao{
+            limpa()
+	       escreva("Quantas apostas deseja fazer?\n")
+	   	  leia(apostas)
+	   	  para(inteiro z=0; z < apostas; z++){
 
 		
-          sorteio( 50, mn)
-          escreva("\n")
-	     }
-        se(apostas>1){
-	        escreva("\nCada jogo custa:1.50")
-	    }
-	    escreva("\nValor a ser pago:",1.50*apostas)
-
+        	  	sorteio( 50, mn, sortear, gan)
+         		 escreva("\n")
+			
+	    	 }
+	    	 valor( min, precos, apostas, 50)
+	   }
 	}
 	funcao Lotofacil()
 	{
+	    inteiro gan = 15
 	    inteiro min = 15
 	    inteiro max = 20
 	    inteiro mn = 25
-      real precos[4]={2.50,  40.00, 340.00,  2040.00}
-	    apostador(min, max, mn, precos)
+         real precos[4]={2.50,  40.00, 340.00,  2040.00}
+	    apostador(min, max, mn, precos, gan)
 	     
 	    
 	    
 	}
 	
 	
-	funcao apostador(inteiro min, inteiro max, inteiro mn,real precos[])
+	funcao apostador(inteiro min, inteiro max, inteiro mn,real precos[], inteiro gan)
 	{
+	    inteiro n 
+	    logico g = verdadeiro
+	    inteiro sortear[100]
 	    inteiro apostas
 	    inteiro dezena
+
+	    para(inteiro i=0; i < gan; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==sortear[k]){
+                 	g=falso
+                 	pare
+                 }senao{
+                 	g=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(g==falso)
+            	sortear[i] = n
+		}
+	    
 	    faca{
 	    escreva("Quantas apostas deseja fazer?\n")
 	    leia(apostas)
@@ -143,40 +192,79 @@ programa
 	    para(inteiro z=0; z < apostas; z++){
 
 		
-          sorteio( dezena, mn)
+          sorteio( dezena, mn, sortear, gan)
           escreva("\n")
 	     }
         valor( min, precos, apostas, dezena)
 	     
 	}
-	funcao apostador_man(inteiro min, inteiro max, inteiro mn, inteiro gan){
+	funcao apostador_man(inteiro min, inteiro max, inteiro mn, inteiro gan, real precos[]){
+		logico g = verdadeiro
 		inteiro v = 0
 		inteiro m
 		inteiro n
 		inteiro par
-		inteiro escolhidos[15]
+		inteiro escolhidos[100]
 		inteiro sortear[100]
+
+		para(inteiro i=0; i < gan; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
 		
+               para(inteiro k=0; k < i; k++){
+                 se(n==sortear[k]){
+                 	g=falso
+                 	pare
+                 }senao{
+                 	g=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(g==falso)
+            	sortear[i] = n
+		}
 		
 		faca{
 		escreva("Quantos numeros você vai jogar: ")
 		leia(m)
 			se(m < min)
 			{
-				escreva("Numero minimo não atingido (", min, ")\n")
+				escreva("Numero minimo não atingido (", min,")\n")
+				u.aguarde(1000)
 			}
 			senao se(m > max)
 			{
-				escreva("Numero maximo (", max, ")\n")
+				escreva("Numero maximo foi excedido(", max, ")\n")
+				u.aguarde(1000)
 			}
 			limpa()
 		}enquanto(m < min ou m > max)
+
 		
 			para(inteiro i=0; i < m; i++){
-				escreva("Escolha um numero: ")
-				leia(n)
-				escolhidos[i] = n
-
+				faca{
+					escreva("Escolha um numero (0 - ", mn, "): ")
+					leia(n)
+					se(n > mn)
+					{
+						escreva("Numero maximo foi excedido(", mn, ")\n")
+						u.aguarde(1000)
+						limpa()
+					}
+					senao se(n < 0)
+					{
+						escreva("Numero minimo não atingido (0)\n")
+						u.aguarde(1000)
+						limpa()
+					}
+					senao
+					{
+						escolhidos[i] = n
+					}
+				}enquanto(n > mn ou n < 0)
 					para(inteiro j=0; j < i; j++){
 						se(escolhidos[i] == escolhidos[j])
 						{
@@ -184,13 +272,13 @@ programa
 							i--
 							u.aguarde(1000)
 						}
-	}
+					}
 				limpa()
 			}
 
 			para(inteiro i=0; i < m; i++){
 				
-					para(inteiro j=0; j < 6; j++){
+					para(inteiro j=0; j < gan; j++){
 						se(escolhidos[i] == sortear[j])
 						{
 							v++
@@ -198,16 +286,18 @@ programa
 						}
 					}
 			}
-			se(v == 6)	
+			se(v == gan)	
 			{
 				escreva("DEU CERTO!!")
 			}
 			senao{
 				escreva("NÃO DEU CERTO :(")
 			}
-	}
-	funcao sorteio(inteiro dezena,inteiro mn){
-
+			valor( min, precos, 1, m)
+	 }
+	funcao sorteio(inteiro dezena,inteiro mn, inteiro sortear[], inteiro gan){
+		cadeia na = ""
+		inteiro ver = 0
 		inteiro dezenas_s[100]
 		inteiro n=0
 		logico v=verdadeiro
@@ -230,10 +320,10 @@ programa
             		
             	}enquanto(v==falso)
             	
-
+		
+           
 		
 
-           
                 dezenas_s[i]=n
                 
 		}
@@ -250,9 +340,23 @@ programa
               
 		}
 		
-     
+	     	para(inteiro i=0; i < dezena; i++){
+				para(inteiro j=0; j < gan; j++){
+					se(dezenas_s[i] == sortear[j])
+					{
+						ver++
+						pare
+					}
+				}
+			}
+			se(ver==gan){
+				na="acertou"
+			}senao{
+				na="errou"
+			}
 
 		}
+
 
           para(inteiro m=0; m < dezena; m++){
              se(m == dezena-1)
@@ -264,15 +368,11 @@ programa
              	escreva(dezenas_s[m],"--")
              }
              
+             
 		}
-
-		
-		
-
-
-		
+		escreva(";",na)		
 	}
-	
+
 	funcao valor(inteiro min,real precos[],inteiro apostas,inteiro dezena)
 	{
 	    se(apostas>1){
