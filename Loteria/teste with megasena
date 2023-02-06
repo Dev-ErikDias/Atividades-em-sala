@@ -73,7 +73,7 @@ programa
 	    inteiro max = 50
 	    inteiro mn = 100
 	    inteiro apostas 
-	    escreva("Este jogo esta limitado à 50 dezenas como minimo e maximo\n")
+	    escreva("Este jogo esta limitado à 50 dezenas como mínimo e máximo\n")
 	    escreva("Quantas apostas deseja fazer?\n")
 	    leia(apostas)
 	    para(inteiro z=0; z < apostas; z++){
@@ -110,7 +110,7 @@ programa
 	    leia(apostas)
     	    se(apostas < 1)
     	    {
-    	        escreva("Numero minimo não atingido (1)\n")
+    	        escreva("Número mínimo não atingido (1)\n")
     	    }
 	    }enquanto(apostas < 1)
 	    
@@ -120,11 +120,11 @@ programa
 	    
 	        se(dezena < min)
     	    {
-    	        escreva("Numero minimo não atingido (", min, ")\n")
+    	        escreva("Número mínimo não atingido (", min, ")\n")
     	    }
     	    se(dezena> max)
     	    {
-    	        escreva("Numero maximo excedido (", max, ")\n")
+    	        escreva("Número máximo excedido (", max, ")\n")
     	    }
 	    }enquanto(dezena < min ou dezena > max)
        
