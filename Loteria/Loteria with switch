@@ -93,12 +93,12 @@ programa
 	}
 	funcao Lotomania()
 	{
-	    inteiro sortear[1] = {0}
+	    inteiro sortear[50]
 	    cadeia res
-	    inteiro gan = 20
-	    inteiro min = 50
-	    inteiro max = 50
-	    inteiro mn = 100
+	    inteiro gan = 10
+	    inteiro min = 10
+	    inteiro max = 10
+	    inteiro mn = 20
 	    inteiro apostas 
 	    real precos[1] = {1.50}
 	    escreva("Este jogo esta limitado à 50 dezenas como minimo e maximo\n")
@@ -116,11 +116,11 @@ programa
 	   	  para(inteiro z=0; z < apostas; z++){
 
 		
-        	  	sorteio( 50, mn, sortear, gan)
+        	  	sorteio( 20, mn, sortear, gan)
          		 escreva("\n")
 			
 	    	 }
-	    	 valor( min, precos, apostas, 50)
+	    	 valor( min, precos, apostas, 10)
 	   }
 	}
 	funcao Lotofacil()
@@ -129,7 +129,7 @@ programa
 	    inteiro min = 15
 	    inteiro max = 20
 	    inteiro mn = 25
-         real precos[4]={2.50,  40.00, 340.00,  2040.00}
+         real precos[6]={2.50,  40.00, 340.00,  2040.00, 9690.00, 38760.00}
 	    apostador(min, max, mn, precos, gan)
 	     
 	    
@@ -339,7 +339,7 @@ programa
 
               
 		}
-		
+         }	
 	     	para(inteiro i=0; i < dezena; i++){
 				para(inteiro j=0; j < gan; j++){
 					se(dezenas_s[i] == sortear[j])
@@ -350,12 +350,12 @@ programa
 				}
 			}
 			se(ver==gan){
-				na="acertou"
+				na="Acertou!!"
 			}senao{
-				na="errou"
+				na="Errou :("
 			}
 
-		}
+		
 
 
           para(inteiro m=0; m < dezena; m++){
