@@ -1,0 +1,68 @@
+programa
+{
+	
+inclua biblioteca Util --> u
+	funcao inicio()
+	{
+		inteiro min = 0
+		inteiro max = 0
+		inteiro mn = 0
+		inteiro opcao 
+		escreva("||*****************||\n")
+		escreva("|| [1] - Mega Sena ||\n")
+		escreva("|| [2] - Quina     ||\n")
+		escreva("|| [3] - Lotomania ||\n")
+		escreva("|| [4] - Lotofácil ||\n")
+		escreva("||*****************||\n")
+		escreva("Qual jogo deseja jogar?\n")
+		leia(opcao)
+		escolha(opcao){
+
+			caso 1: 
+				limpa()
+				Mega_sena(6, 15, 60)
+			pare
+
+			
+			caso 2: 
+				limpa()
+				Quina(5, 15, 80)
+			pare
+				
+			caso 3:
+				limpa()
+				Lotomania(50, 50, 100)
+			pare
+
+			caso 4:
+				limpa()
+			    Lotofacil(15, 20, 25)
+			pare
+			
+			caso contrario: 
+				limpa()
+				escreva("Essa opção não é valida")
+				u.aguarde(1000)
+				limpa()
+				inicio()
+			pare
+		}
+	}
+	funcao Mega_sena(inteiro min, inteiro max, inteiro mn)
+	{
+		real precos[10]={4.50, 31.50,126.00,378.00, 945.00, 2079.00,4158.00, 7722.00,13513.50,22522.50}
+		
+	}
+	funcao Quina(inteiro min, inteiro max, inteiro mn)
+	{
+		real precos[11]={ 2.00, 12.00, 42.00,112.00, 252.00,  504.00,  924.00, 1584.00, 2574.00, 4004.00, 6006.00}
+	}
+	funcao Lotomania(inteiro min, inteiro max, inteiro mn)
+	{
+		real precos = 1.50
+	}
+	funcao Lotofacil(inteiro min, inteiro max, inteiro mn)
+	{
+		real precos[6]={2.50,  40.00, 340.00,  2040.00, 9690.00, 38760.00}
+	}
+}
