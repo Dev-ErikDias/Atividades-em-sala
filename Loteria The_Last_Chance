@@ -4,6 +4,8 @@ programa
 inclua biblioteca Util --> u
 	funcao inicio()
 	{
+		inteiro sorteados[100]
+		inteiro escolhidos[100]
 		inteiro min = 0
 		inteiro max = 0
 		inteiro mn = 0
@@ -20,7 +22,7 @@ inclua biblioteca Util --> u
 
 			caso 1: 
 				limpa()
-				Mega_sena(6, 15, 60)
+				Mega_sena(6, 15, 60, 6)
 			pare
 
 			
@@ -48,9 +50,10 @@ inclua biblioteca Util --> u
 			pare
 		}
 	}
-	funcao Mega_sena(inteiro min, inteiro max, inteiro mn)
+	funcao Mega_sena(inteiro min, inteiro max, inteiro mn, inteiro gan)
 	{
 		real precos[10]={4.50, 31.50,126.00,378.00, 945.00, 2079.00,4158.00, 7722.00,13513.50,22522.50}
+		apostador(min, max, mn, precos, gan)
 		
 	}
 	funcao Quina(inteiro min, inteiro max, inteiro mn)
@@ -64,5 +67,150 @@ inclua biblioteca Util --> u
 	funcao Lotofacil(inteiro min, inteiro max, inteiro mn)
 	{
 		real precos[6]={2.50,  40.00, 340.00,  2040.00, 9690.00, 38760.00}
+	}
+	funcao apostador(inteiro min, inteiro max, inteiro mn,real precos[], inteiro gan)
+	{
+	    inteiro n 
+	    logico g = verdadeiro
+	    inteiro sorteados[100]
+	    inteiro apostas
+	    inteiro dezena
+
+	    para(inteiro i=0; i < gan; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==sorteados[k]){
+                 	g=falso
+                 	pare
+                 }senao{
+                 	g=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(g==falso)
+            	sorteados[i] = n
+		}
+	    
+	    faca{
+	    escreva("Quantas apostas deseja fazer?\n")
+	    leia(apostas)
+    	    se(apostas < 1)
+    	    {
+    	        escreva("Numero minimo não atingido (1)\n")
+    	    }
+	    }enquanto(apostas < 1)
+	    
+	    faca{
+	    escreva("Quantas dezenas deseja girar?\n")
+	    leia(dezena)
+	    
+	        se(dezena < min)
+    	    {
+    	        escreva("Numero minimo não atingido (", min, ")\n")
+    	    }
+    	    se(dezena> max)
+    	    {
+    	        escreva("Numero maximo excedido (", max, ")\n")
+    	    }
+	    }enquanto(dezena < min ou dezena > max)
+       
+	    sorteio_prog(gan, mn,  sorteados)
+	    para(inteiro z=0; z < apostas; z++){
+
+		
+          sorteio( dezena, mn, gan, escolhidos)
+          escreva("\n")
+	     }
+          
+	     
+	}
+	funcao sorteio(inteiro dezena,inteiro mn, inteiro gan,inteiro &escolhidos[]){
+		cadeia na = ""
+		inteiro ver = 0
+		
+		inteiro n=0
+		logico v=verdadeiro
+
+            para(inteiro i=0; i < dezena; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==escolhidos[k]){
+                 	v=falso
+                 	pare
+                 }senao{
+                 	v=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(v==falso)
+            	
+                escolhidos[i] = n
+                
+		}
+         para(inteiro l=0; l < dezena; l++){
+
+            para(inteiro j=1; j < dezena; j++){
+
+			se(escolhidos[j]<escolhidos[j-1]){
+		       n=escolhidos[j]
+		       escolhidos[j]=escolhidos[j-1]
+		       escolhidos[j-1]=n
+			}
+
+              
+		}
+         }
+           para(inteiro m=0; m < dezena; m++){
+             se(m == dezena-1)
+             {
+             	escreva(escolhidos[m])
+             }
+             senao
+             {
+             	escreva(escolhidos[m],"--")
+             }
+           }
+	}
+	funcao sorteio_prog(inteiro gan, inteiro mn,inteiro &sorteados[]){
+		inteiro n
+		
+		logico g = verdadeiro
+		para(inteiro i=0; i < gan; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==sorteados[k]){
+                 	g=falso
+                 	pare
+                 }senao{
+                 	g=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(g==falso)
+            	
+                sorteados[i] = n
+	           
+		}
+	}
+
+	funcao comparar(inteiro &escolhidos[],inteiro &sorteados[],inteiro gan){
+      inteiro c
+      
+		
 	}
 }
