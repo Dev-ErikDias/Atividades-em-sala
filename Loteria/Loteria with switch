@@ -1,13 +1,8 @@
 programa
 {
 	inclua biblioteca Util--> u
-
+	//Função do menu
 	funcao inicio()
-	{
-		menu()
-	}
-
-	funcao vazio menu()
 	{
 		inteiro opcao 
 		escreva("||*****************||\n")
@@ -46,10 +41,13 @@ programa
 				escreva("Essa opção não é valida")
 				u.aguarde(1000)
 				limpa()
-				menu()
+				inicio()
 			pare
 		}
 	}
+	/*
+	 Função da Mega_sena
+	 */
 	funcao Mega_sena(inteiro min, inteiro max, inteiro mn, inteiro gan)
 	{
 	    gan = 6
@@ -71,6 +69,9 @@ programa
 	    }
 	    
 	}
+	/*
+	 Função da Quina
+	 */
 	funcao Quina(inteiro min, inteiro max, inteiro mn, inteiro gan)
 	{
 	    cadeia res
@@ -91,6 +92,9 @@ programa
 	       apostador(min, max, mn, precos, gan)
 	    }
 	}
+	/*
+	 Função da Lotomania
+	 */
 	funcao Lotomania(inteiro min, inteiro max, inteiro mn, inteiro gan)
 	{
 	    logico v = verdadeiro
@@ -143,6 +147,9 @@ programa
 	    	 valor( min, precos, apostas, 10)
 	   }
 	}
+	/*
+	 Função da lotofacil
+	 */
 	funcao Lotofacil(inteiro min, inteiro max, inteiro mn, inteiro gan)
 	{
 	    cadeia res
@@ -165,8 +172,9 @@ programa
 	    
 	    
 	}
-	
-	
+	/*
+	 O Apostador recebe os valores necessários e passa para o "sorteio" e depois o "valor"
+	 */
 	funcao apostador(inteiro min, inteiro max, inteiro mn,real precos[], inteiro gan)
 	{
 	    inteiro n 
@@ -228,6 +236,9 @@ programa
         valor( min, precos, apostas, dezena)
 	     
 	}
+	/*
+	 O Apostador manual recebe os valores do usúario e compara com os valores sorteados
+	 */
 	funcao apostador_man(inteiro min, inteiro max, inteiro mn, inteiro gan, real precos[]){
 		logico g = verdadeiro
 		inteiro v = 0
@@ -325,6 +336,9 @@ programa
 			}
 			valor( min, precos, 1, m)
 	 }
+	 /*
+	  O "Sorteio" sorteia os numeros do usúario, ordena eles, compara com os numeros sorteados e mostra na tela
+	  */
 	funcao sorteio(inteiro dezena,inteiro mn, inteiro sortear[], inteiro gan){
 		cadeia na = ""
 		inteiro ver = 0
@@ -402,7 +416,9 @@ programa
 		}
 		escreva(";",na)		
 	}
-
+	/*
+	 O "valor" calcula o valor total das apostas compradas pelo usúario
+	 */
 	funcao valor(inteiro min,real precos[],inteiro apostas,inteiro dezena)
 	{
 	    se(apostas>1){
