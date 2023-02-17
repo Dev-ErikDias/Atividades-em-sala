@@ -93,14 +93,41 @@ programa
 	}
 	funcao Lotomania()
 	{
+	    logico v = verdadeiro
+	    inteiro n
 	    inteiro sortear[50]
 	    cadeia res
 	    inteiro gan = 10
 	    inteiro min = 10
 	    inteiro max = 10
-	    inteiro mn = 20
+	    inteiro mn = 10
 	    inteiro apostas 
 	    real precos[1] = {1.50}
+	    para(inteiro i=0; i < 10; i++){
+
+            	faca{
+                     n= u.sorteia(0,mn) 
+                
+
+		
+               para(inteiro k=0; k < i; k++){
+                 se(n==sortear[k]){
+                 	v=falso
+                 	pare
+                 }senao{
+                 	v=verdadeiro
+                 }
+		   }      
+            		
+            	}enquanto(v==falso)
+            	
+		
+           
+		
+
+                sortear[i]=n
+                
+		}
 	    escreva("Este jogo esta limitado à 50 dezenas como minimo e maximo\n")
 	    escreva("Deseja escolher os numeros?\n")
 	    leia(res)
@@ -116,7 +143,7 @@ programa
 	   	  para(inteiro z=0; z < apostas; z++){
 
 		
-        	  	sorteio( 20, mn, sortear, gan)
+        	  	sorteio( 10, mn, sortear, gan)
          		 escreva("\n")
 			
 	    	 }
