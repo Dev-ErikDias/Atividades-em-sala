@@ -93,7 +93,7 @@ programa
 	    inteiro min = 15
 	    inteiro max = 20
 	    inteiro mn = 25
-      real precos[4]={2.50,  40.00, 340.00,  2040.00}
+      real precos[6]={2.50,  40.00, 340.00,  2040.00, 9690.00, 38760.00}
 	    apostador(min, max, mn, precos)
 	     
 	    
