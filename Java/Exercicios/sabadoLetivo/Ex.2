@@ -1,0 +1,40 @@
+package sabadoLetivo1;
+
+public class Ex2 {
+
+	public static void main(String[] args) {
+		int n = 5;
+		int r = 3;
+		int aux = 0;
+		
+		
+		System.out.println("FOR:");
+		for(int i = 0; i <= 10; i++) {
+			System.out.println(n);
+			n = n + r;
+		}
+		
+		n = 5;
+		r = 3;
+		
+		System.out.println("WHILE:");
+		while(aux <= 10){
+			System.out.println(n);
+			n = n + r;
+			aux++;
+		}
+		
+		n = 5;
+		r = 3;
+		aux = 0;
+		
+		System.out.println("DO-WHILE:");
+		do{
+			System.out.println(n);
+			n = n + r;
+			aux++;
+		}while(aux <= 10);
+		
+	}
+
+}
