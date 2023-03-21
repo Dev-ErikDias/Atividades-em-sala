@@ -1,0 +1,10 @@
+public static void main(String[] args) {
+		for(int n = 5; n <= 12; n++) {
+			int fat = 1;
+			
+			for(int n1 = 1; n1<=n;n1++) {
+				fat = fat * n1;
+			}
+			System.out.println(n + "! = " + fat);
+		}
+	}
