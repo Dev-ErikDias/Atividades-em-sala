@@ -1,0 +1,23 @@
+package resolucaoexerc;
+import java.util.Scanner;
+public class inputJava {
+
+	public static void main(String[] args) {
+		int a = 0;
+		System.out.print("Informe um numero: ");
+		Scanner input = new Scanner(System.in);
+		for(int i = 1;i<=10;i++){
+			
+			int numero = input.nextInt();
+			if(numero > 0) {
+				System.out.println("O numero " + numero + " é positivo!");
+			}else if(numero == 0){
+				System.out.println("O numero 0 é neutro!");
+			}else{
+				System.out.println("O numero " + numero + " é negativo!");
+			}
+		}
+		
+	}
+
+}
