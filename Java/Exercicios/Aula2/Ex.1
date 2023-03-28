@@ -8,7 +8,7 @@ public class inputJava {
 		Scanner input = new Scanner(System.in);
 		for(int i = 1;i<=10;i++){
 			
-			int numero = input.nextInt();
+			int numero = Integer.parseInt(input.nextLine());
 			if(numero > 0) {
 				System.out.println("O numero " + numero + " é positivo!");
 			}else if(numero == 0){
