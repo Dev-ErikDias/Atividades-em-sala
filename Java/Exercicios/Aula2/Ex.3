@@ -1,0 +1,24 @@
+package resolucaoexerc;
+import java.util.Scanner;
+public class inputJava3 {
+
+	public static void main(String[] args) {
+			for(int i = 1;i<=5;i++) {
+			    Scanner input = new Scanner(System.in);		
+			    
+				System.out.print("Informe seu nome: ");
+				String nome = input.nextLine();
+				
+				System.out.print("Informe seu peso(em quilos): ");
+				float peso = Float.parseFloat(input.nextLine());
+				
+				System.out.print("Informe sua altura(em metros): ");
+				float altura = Float.parseFloat(input.nextLine());
+				
+				float imc = (peso / (altura*altura));
+				System.out.println(nome+ " seu IMC é: " + imc);
+			}
+		
+	}
+
+}
