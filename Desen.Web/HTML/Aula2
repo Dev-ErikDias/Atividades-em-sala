@@ -1,0 +1,17 @@
+<html>
+<head>
+<title> Aula HTML </title>
+</head>
+<body bgcolor="#98FB98"background="gato.jpg">
+<font color = "white">
+	<h1> Titulo de exemplo 01</h1>
+	<hr> <!-- linha horizontal -->
+	<h2> Titulo de exemplo 02</h2>
+	<h3> Titulo de exemplo 03</h3>
+	<h4> Titulo de exemplo 04</h4>
+	<h5> Titulo de exemplo 05</h5>
+	<h6> Titulo de exemplo 06</h6>
+	<h7> Titulo de exemplo 07</h7>
+</font>
+</body>
+</html>
