@@ -1,0 +1,13 @@
+public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int imp = 0;
+		for(int i = 1; i<= 10;i++) {
+			System.out.print("Informe um numero: ");
+			int n = Integer.parseInt(input.nextLine());
+			if(n % 2 != 0) {
+				imp++;
+			}		
+		}
+		System.out.println("A quantidade de numeros pares informados foi: " + (10 - imp));
+		System.out.println("A quantidade de numeros impares informados foi: " + imp);
+	}
