@@ -1,17 +1,18 @@
 public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		float p = 0;
-		float imp = 0;
+		float neg = 0;
 		int n = 1;	
 		while(n != 0){
 			System.out.print("Informe um numero: ");
 			n = Integer.parseInt(input.nextLine());
-			if(n % 2 == 0) {
+			if(n > 0) {
 				p+= n;
 			}else {
-				imp+= n;
+				neg+= n;
 			}
+			
 		}
-		System.out.println("A soma dos numeros impares informados foi: " + imp);
-		System.out.println("A soma dos numeros pares informados foi: " + p);
+		System.out.println("A soma dos numeros negativos informados foi: " + neg);
+		System.out.println("A soma dos numeros positivos informados foi: " + p);
 	}
