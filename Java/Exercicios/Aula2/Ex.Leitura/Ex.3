@@ -1,0 +1,18 @@
+public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		float nota;
+		for(int i = 1; i<=5;i++) {
+			System.out.print("Informe o nome do aluno: ");
+			String lido = input.nextLine();
+			System.out.print("Informe sua primeira nota: ");
+			float n1 = Float.parseFloat(input.nextLine());
+			System.out.print("Informe sua segunda nota: ");
+			float n2 = Float.parseFloat(input.nextLine());
+			nota = (n1 + n2)/2;
+			if(nota > 70) {
+				System.out.println(lido + ", sua nota final foi: " + nota + ". VOCÊ FOI APROVADO!!");
+			}else{
+				System.out.println(lido + ", sua nota final foi: " + nota + ". VOCÊ FOI REPROVADO!!");
+			}
+		}
+	}
