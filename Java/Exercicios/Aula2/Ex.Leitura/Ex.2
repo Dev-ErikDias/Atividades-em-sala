@@ -1,0 +1,20 @@
+public static void main(String[] args) {
+		float n = 0;
+		float s = 0;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Número de alunos que irão contribuir: ");
+		int n2 = Integer.parseInt(input.nextLine());
+		if(n2 < 5){
+			do {
+			System.out.print("Número de alunos que irão contribuir: ");
+			n2 = Integer.parseInt(input.nextLine());
+			}while(n2 < 5);
+		}
+		for(int i = 1; i <= n2;i++){
+			System.out.println("=====Aluno "+i+"=====");
+			System.out.print("Valor que será contribuido: ");
+			n = Float.parseFloat(input.nextLine());
+			s += n;
+		}
+		System.out.println("O valor total arrecadado foi: R$"+s);
+	}
