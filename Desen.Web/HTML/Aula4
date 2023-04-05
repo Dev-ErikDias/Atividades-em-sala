@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de formatação de documentos</title>
+</head>
+<body bgcolor = "SaddleBrown">
+    <center>
+    <font color = "black">
+    <h1> Páscoa</h1>
+    </font>
+    <hr>
+    <font color = "white" >
+        Páscoa é tempo de vida, <br>
+        Páscoa é tempo de cor,<br>
+        Páscoa é festa vivida, <br>
+        Na primavera em flor. <br>
+        <br>
+
+        <b>Comem-se amêndoas e ovos,</b><br>
+        <i>A mãe prepara o folar,</i> <br>
+        <s>E o cabrito não falta,</s> <br>
+        <u>Na mesa, para o jantar.</u> <br>
+        <br>
+
+        Vamos viver a páscoa, <br>
+        Unidos em alegria, <br>
+        Fazendo de cada dia, <br>
+        Uma festa em hármonia. <br>
+    </font>
+    </center>
+    <marquee> Estou me movendo!</marquee>
+    <center><img src = "gato.jpg" height = "500" width = "500"/></center>
+
+    </body>
+</body>
+</html>
