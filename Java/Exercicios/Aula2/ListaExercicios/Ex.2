@@ -1,0 +1,20 @@
+public static void main(String[] args) {
+		int n;
+		int n1;
+		int n2;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Informe um número: ");
+		n = Integer.parseInt(input.nextLine());
+		System.out.print("Informe outro número: ");
+		n1 = Integer.parseInt(input.nextLine());
+		System.out.print("Informe o ultimo número: ");
+		n2 = Integer.parseInt(input.nextLine());
+		if(n < n1 && n < n2){
+			System.out.println("O menor número informado foi " + n);
+		}else if(n1 < n && n1 < n2){
+			System.out.println("O menor número informado foi " + n1);
+		}else {
+			System.out.println("O menor número informado foi " + n2);
+		}
+		
+	}
