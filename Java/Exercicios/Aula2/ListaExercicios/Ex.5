@@ -1,0 +1,23 @@
+public static void main(String[] args) {
+		int n = 0;
+		int n1 = 0;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Informe um valor: ");
+		n = Integer.parseInt(input.nextLine());
+		System.out.print("Informe mais um valor: ");
+		n1 = Integer.parseInt(input.nextLine());
+		if(n1 > n){
+			for(int i = n; i<=n1;i++){
+				if(i % 5 == 0){
+					System.out.println(i);
+				}
+			}
+		}else{
+			for(int i = n1; i<=n;i++){
+				if(i % 5 == 0){
+					System.out.println(i);
+				}
+			}
+		}
+
+	}
