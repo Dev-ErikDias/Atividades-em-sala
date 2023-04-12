@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor = "white">
+    <h1> Site de compras</h1>
+    <br>
+    <a href="produtos.html"> Produtos</a><br>
+    <a href="https://www.mercadolivre.com.br/"> Acesso ao Mercado Livre</a><br>
+
+    <p align="center"> <font color="red" size = "3" face = "times" ></p>
+        Clique sobre a imagem para vê-la em outra aba
+    </font>
+    <br><a href="gato.jpg"> <img src ="gato.jpg" width="200" height="200"> </a>
+    <br> <br>
+    Tipos de chocolate<ol type ="a" start = "5">
+        <font color = "red" face = "Courier" size = "3">
+       <li> Amargo </li>
+       <li> Ao leite</li>
+       <li> Trufado</li>
+       <li> 70% Cacau</li>
+       <li> Vegano</li>
+       </font>
+    </ol>
+    <br>
+    Preços
+    <ul type = "circle">
+        <font color = "green" face = "calibre" size = "3">
+        <li> R$ 107,99</li>
+        <li> R$ 93,00</li>
+        <li> R$ 150,87</li>
+        <li> R$ 200,00</li>
+        <li> R$ 350,99</li>
+        </font>
+    </ul>
+</body>
+</html>
