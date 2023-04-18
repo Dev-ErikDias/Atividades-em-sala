@@ -1,0 +1,33 @@
+package resolucaoexerc;
+
+public class Pessoa {
+
+	String nome;
+	String endereço;
+	String cidade;
+	int uf;
+	double altura;
+	
+	void falarOla(){
+		System.out.println("Olá mundo, sou " + nome + "!");
+	}
+	public static void main(String[] args) {
+		Pessoa pes1 = new Pessoa();
+		pes1.nome = "Erik";
+		pes1.cidade = "Foz do Iguaçu";
+		pes1.altura = 1.75;
+		pes1.endereço = "Serrana";
+		pes1.uf = 41;
+		
+		Pessoa pes2 = new Pessoa();
+		pes2.nome = "Vini";
+		pes2.cidade = "Foz do Iguaçu";
+		pes1.altura = 1.6;
+		pes1.endereço = "Xavier da Silva";
+		pes1.uf = 41;
+		
+		pes1.falarOla();
+		pes2.falarOla();
+	}
+
+}
