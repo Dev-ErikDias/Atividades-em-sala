@@ -1,0 +1,50 @@
+package resolucaoexerc;
+import java.util.Scanner;
+public class Retangulo {
+	int base;
+	int altura;
+	Integer area(){
+		return base*altura;
+	}
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		Retangulo ret1 = new Retangulo();
+		System.out.print("Informe a altura do 1° retangulo: ");
+		ret1.altura = Integer.parseInt(input.nextLine());
+		System.out.print("Informe a base do 1° retangulo: ");
+		ret1.base = Integer.parseInt(input.nextLine());
+		System.out.println("A area do retangulo 1 é: "+ ret1.area());
+		
+		Retangulo ret2 = new Retangulo();
+		System.out.print("Informe a altura do 2° retangulo: ");
+		ret2.altura = Integer.parseInt(input.nextLine());
+		System.out.print("Informe a base do 2° retangulo: ");
+		ret2.base = Integer.parseInt(input.nextLine());
+		System.out.println("A area do retangulo 2 é: "+ ret2.area());
+		
+		Retangulo ret3 = new Retangulo();
+		System.out.print("Informe a altura do 3° retangulo: ");
+		ret3.altura = Integer.parseInt(input.nextLine());
+		System.out.print("Informe a base do 3° retangulo: ");
+		ret3.base = Integer.parseInt(input.nextLine());
+		System.out.println("A area do retangulo 3 é: "+ ret3.area());
+		
+		Retangulo ret4 = new Retangulo();
+		System.out.print("Informe a altura do 4° retangulo: ");
+		ret4.altura = Integer.parseInt(input.nextLine());
+		System.out.print("Informe a base do 4° retangulo: ");
+		ret4.base = Integer.parseInt(input.nextLine());
+		System.out.println("A area do retangulo 4 é: "+ ret4.area());
+		
+		Retangulo ret5 = new Retangulo();
+		System.out.print("Informe a altura do 5° retangulo: ");
+		ret5.altura = Integer.parseInt(input.nextLine());
+		System.out.print("Informe a base do 5° retangulo: ");
+		ret5.base = Integer.parseInt(input.nextLine());
+		System.out.println("A area do retangulo 5 é: "+ ret5.area());
+
+	}
+
+}
