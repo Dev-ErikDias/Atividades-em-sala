@@ -1,0 +1,30 @@
+package Modelo;
+
+import Modelo.Monitor;
+
+public class MonitorExec {
+
+	public static void main(String[] args) {
+		
+		Monitor monitorAoc = new Monitor("AOC", 28, "1024X768");
+		/*
+		monitorAoc.marca = "AOC";
+		monitorAoc.resolucao = "1024x768";
+		monitorAoc.tamanho = 20;
+		*/
+		monitorAoc.ligar();
+		monitorAoc.transmitir();
+		monitorAoc.desligar();
+		
+		Monitor monitorHP = new Monitor("HP", 14, "800X600");
+		/*
+		monitorHP.marca = "HP";
+		monitorHP.resolucao = "800x600";
+		monitorHP.tamanho = 14;
+		*/
+		monitorHP.ligar();
+		monitorHP.transmitir();
+		monitorHP.desligar();
+	}
+
+}
