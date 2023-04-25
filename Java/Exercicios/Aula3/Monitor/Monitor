@@ -1,0 +1,29 @@
+package Modelo;
+
+public class Monitor {
+	
+	//Atributos
+	String marca;
+	int tamanho;
+	String resolucao;
+	
+	//Construtor
+	Monitor(String pMarca, int pTamanho, String pResolucao){
+		marca = pMarca;
+		tamanho = pTamanho;
+		resolucao = pResolucao;
+	}
+	
+	//Métodos
+	void transmitir(){
+		String aux = "Transmitindo imagem - Resolução:"+resolucao+ "- Tamanho: "+tamanho+'"';
+		System.out.println(aux);
+	}
+	void ligar(){
+		System.out.println("Ligado");
+	}
+	void desligar(){
+		System.out.println("Desligado");
+	}
+	
+}
