@@ -1,0 +1,27 @@
+package ExerRetangulo;
+
+import java.util.Scanner;
+
+public class RetanguloExec2 {
+
+	public static void main(String[] args) {
+		int base;
+		int altura;
+		Scanner input = new Scanner(System.in);
+		
+		for(int i = 1; i<=5;i++){
+			System.out.println("Informe a altura do retangulo: ");
+			altura = Integer.parseInt(input.nextLine());
+			
+			System.out.println("Informe a base do retangulo: ");
+			base = Integer.parseInt(input.nextLine());
+			
+			Retangulo Ret = new Retangulo(altura,base);
+			System.out.println("A area do retangulo é: "+Ret.area());
+			
+			System.out.println("Perimetro do retangulo é: "+Ret.per());
+		}
+		input.close();
+	}
+
+}
