@@ -1,0 +1,17 @@
+package ExerRetangulo;
+
+public class RetanguloExec1 {
+
+	public static void main(String[] args) {
+		int altura = 10;
+		int base = 10;
+		Retangulo Ret = new Retangulo(altura, base);
+		System.out.println("A area do retangulo é:"+Ret.area());
+		
+		altura = 5;
+		base = 5;
+		Retangulo Ret2 = new Retangulo(altura, base);
+		System.out.println("A area do retangulo é:"+Ret2.area());
+	}
+
+}
