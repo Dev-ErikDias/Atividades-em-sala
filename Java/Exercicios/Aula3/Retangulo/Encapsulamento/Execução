@@ -1,0 +1,31 @@
+package Execução;
+
+import java.util.Scanner;
+
+import Modelo.Retangulo;
+
+public class RetanguloExec {
+
+	public static void main(String[] args) {
+			Scanner input = new Scanner(System.in);
+			
+			//Ler 5 retangulos
+			for(int i = 1;i<=5;i++){
+				Retangulo ret = new Retangulo();
+				
+				System.out.println("Informe a base: ");
+				int base = Integer.parseInt(input.nextLine());
+				ret.setBase(base);
+				
+				System.out.println("Informe a altura: ");
+				int altura = Integer.parseInt(input.nextLine());
+				ret.setAltura(altura);
+				
+				System.out.println("Área = "+ ret.area());
+				System.out.println("Perimetro = "+ ret.perimetro());
+			}
+			
+			input.close();
+	}
+
+}
