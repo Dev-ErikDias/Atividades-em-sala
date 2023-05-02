@@ -1,0 +1,23 @@
+package ExerRetangulo;
+
+public class Retangulo {
+	//Atributos
+	int altura;
+	int base;
+	
+	//Construtor
+	Retangulo(int pAltura, int pBase){
+		altura = pAltura;
+		base = pBase;
+	}
+	
+	//Métodos
+	int area(){
+		int area = altura*base;
+		return(area);
+	}
+	int per(){
+		int per = (altura * 2) + (base*2);
+		return(per);
+	}
+}
