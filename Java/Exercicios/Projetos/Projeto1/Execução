@@ -1,0 +1,23 @@
+package Modelo;
+import Modelo.Funcionario;
+public class Execucao {
+
+	public static void main(String[] args) {
+		
+			Funcionario fun1 = new Funcionario("Erik", "Dias", "gerente", 5000);
+			
+			fun1.Apresentacao();
+			
+			
+			Funcionario fun2 = new Funcionario("Pedrinho", "Gomes", "vendedor", 3000);
+			
+			fun2.Apresentacao();
+
+			
+			Funcionario fun3 = new Funcionario("João", "Pedro", "empacotador", 2500);
+			
+			fun3.Apresentacao();
+
+	}
+
+}
