@@ -18,10 +18,13 @@ public class Funcionario {
 		
 		//Métodos
 		public void Apresentacao(){
-			System.out.println("O funcionário "+primeiroNome +" "+sobreNome+", cargo "+cargo+", recebe um salário anual de R$"+salarioMensal);
+			System.out.println("O funcionário "+primeiroNome +" "+sobreNome+", cargo "+cargo+", recebe um salário anual de R$"+salarioAnual());
 		}
-  
-    //GETs e SETs
+		
+		public float salarioAnual(){
+			return(salarioMensal*12);
+		}
+
 		public String getPrimeiroNome() {
 			return primeiroNome;
 		}
