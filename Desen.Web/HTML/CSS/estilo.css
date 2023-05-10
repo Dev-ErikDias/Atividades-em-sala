@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(179, 179, 250);
+}
+p{
+    font-family:'Courier New', Courier, monospace;
+    color:rgb(255, 255, 255);
+    font-size: 50px;
+}
+h1{
+    font-family: Courier;
+    font-size: 36pt;
+    color:blueviolet;
+}
+h2{
+    font-family: Arial;
+    font-size: 32pt;
+    color:blue;
+}
+h3{
+    font-family: Comic Sans MS;
+    font-size: 28pt;
+    color:red;
+    font-style:italic;
+}
+h4{
+    font-family:Times;
+    font-size:24pt;
+    color:purple;
+    font-weight: bold;
+}
+h5{
+    font-family:Impact;
+    font-size:20pt;
+    color:green;
+}
+h6{
+    font-family: Verdana;
+    font-size: 16pt;
+    color:yellow;
+    font-weight: bold;
+    font-style:italic;
+}
