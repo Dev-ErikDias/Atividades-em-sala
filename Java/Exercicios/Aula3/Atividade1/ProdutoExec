@@ -1,0 +1,33 @@
+package Execucao;
+import java.util.Scanner;
+import Modelo.Produto;
+public class ProdutoExec {
+
+	public static void main(String[] args) {
+			Scanner input = new Scanner(System.in);
+			Produto ver = new Produto();
+			
+			for(int i = 1; i<=5;i++){
+				Produto pro = new Produto();
+				System.out.print("Informe a descrição do produto: ");
+				pro.setDescricao(input.nextLine());
+				System.out.print("Informe a unidade de medida do produto: ");
+				pro.setUnidadeMedida(input.nextLine());
+				System.out.print("Informe a quantidade do produto: ");
+				pro.setQuantidade(Integer.parseInt(input.nextLine()));
+				System.out.print("Informe o valor unitário do produto: ");
+				pro.setValorUnitario(Float.parseFloat(input.nextLine()));
+				
+				if(ver.getValorUnitario() < pro.getValorUnitario()) {
+					ver.setValorUnitario(pro.getValorUnitario());
+					ver.setDescricao(pro.getDescricao());
+					ver.setUnidadeMedida(pro.getUnidadeMedida());
+				}
+				
+				System.out.println("Produto: "+pro.getDescricao()+"("+pro.getUnidadeMedida()+") | "
+				+pro.getQuantidade()+ " X R$"+ pro.getValorUnitario()+ " = R$"+pro.ValorTotal());
+				
+			}
+			System.out.println("Produto com maior valor vendido: "+ver.getDescricao()+"("+ver.getUnidadeMedida()+")");
+	}	
+}
