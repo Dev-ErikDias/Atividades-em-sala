@@ -1,0 +1,30 @@
+package Execucao;
+import Modelo.Computador;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class ComputadorExec {
+
+	public static void main(String[] args) {
+		List<Computador> lista = new ArrayList<>();
+		Scanner input = new Scanner(System.in);
+		for(int i = 1;i<=2;i++){
+			Computador com = new Computador();
+			System.out.print("Informe um processador: ");
+			com.setProcessador(input.nextLine());
+			System.out.print("Informe um tamanho de memória: ");
+			com.setMemoria(Integer.parseInt(input.nextLine()));
+			System.out.print("Informe o preço do computador: ");
+			com.setPreco(Float.parseFloat(input.nextLine()));
+			lista.add(com);
+		}
+		
+		for(Computador c : lista){
+			System.out.println(c.getProcessador());
+			System.out.println(c.getMemoria());
+			System.out.println(c.getPreco());
+		}
+		
+	}
+
+}
