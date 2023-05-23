@@ -1,0 +1,33 @@
+package Execucao;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import Modelo.Tipos;
+public class TiposExec {
+
+	public static void main(String[] args) {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(10);
+		lista.add(45);
+		
+		Integer valor = 200;
+		lista.add(valor);
+		
+		lista.add(4);
+		
+		lista.add(65);
+		
+		lista.remove(0);
+		lista.sort(Comparator.naturalOrder());
+		
+		for(int i = 0;i<lista.size();i++) {
+			System.out.println(lista.get(i));
+		}
+		System.out.println("FOR EACH");
+		for(Integer num : lista){
+			System.out.println(num);
+		}
+	}
+
+}
