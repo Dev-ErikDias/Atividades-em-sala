@@ -1,0 +1,27 @@
+package Modelo;
+
+public class Computador {
+	private String processador;
+	private Integer memoria;
+	private Float preco;
+	
+	public String getProcessador() {
+		return processador;
+	}
+	public void setProcessador(String processador) {
+		this.processador = processador;
+	}
+	public Integer getMemoria() {
+		return memoria;
+	}
+	public void setMemoria(Integer memoria) {
+		this.memoria = memoria;
+	}
+	public Float getPreco() {
+		return preco;
+	}
+	public void setPreco(Float preco) {
+		this.preco = preco;
+	}
+	
+}
