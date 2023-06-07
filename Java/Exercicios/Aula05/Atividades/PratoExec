@@ -1,7 +1,5 @@
 package execucao;
-import modelo.Computador;
 import modelo.Prato;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +21,15 @@ public class PratoExec {
 			vT += prat.getValorTotal();
 			lista.add(prat);
 		}
+		
+			System.out.println("\n\n\n\n\n-----PRATOS  PEDIDOS-----\n");
+		for(Prato p : lista) {
+			System.out.println("-----PRATO "+(lista.indexOf(p)+1)+"-----");
+			System.out.println("Descrição: "+p.getDescricao());
+			System.out.println("Quantidade: "+p.getQuantidade());
+			System.out.println("Valor do prato: R$"+p.getValorUnitario());
+		}
+		System.out.println("\n-----VALOR TOTAL-----");
 		System.out.println("O valor total da janta foi: R$"+vT);
 		input.close();
 	}
