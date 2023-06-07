@@ -1,0 +1,25 @@
+form fieldset{
+    width: 300px;
+    height: 150px;
+    font-size: 20px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px
+}
+form legend{
+    font-style: bold;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+form input{
+   border-radius: 6px;
+}
+input [type = "radio"]{
+    width: 90px;
+    height: 90px;
+}
