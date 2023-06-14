@@ -1,0 +1,34 @@
+legend{
+    background-color: cornflowerblue;
+    font-size: 20px;
+}
+fieldset{
+    width: 700px;
+    height: 600px;
+    margin: 0 auto;
+}
+input{
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+}
+#Agente{
+    width: 545px;
+}
+#nomeCliente{
+    width: 240px;
+}
+#nomeOrg{
+    width: 400px;
+}
+#dataNasc{
+    width: 250px;
+}
+hr{
+    margin: -8px 0;
+    padding: 0;
+    border-color: blue;
+}
+p{
+    color: blue;
+}
