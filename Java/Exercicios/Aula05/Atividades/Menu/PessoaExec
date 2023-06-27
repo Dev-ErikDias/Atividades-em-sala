@@ -1,0 +1,80 @@
+package execucao;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import modelo.Pessoa;
+public class PessoaExec {
+
+	public static void main(String[] args) {
+		List<Pessoa> lista = new ArrayList<>();
+		Scanner input = new Scanner(System.in);
+		Integer opcao = 1;
+		do{
+			System.out.println("++----MENU PESSOAS----++");
+			System.out.println("||[1]Cadastrar        ||");
+			System.out.println("||[2]Listar           ||");
+			System.out.println("||[3]Remover          ||");
+			System.out.println("||[0]Sair do programa ||");
+			System.out.println("++--------------------++");
+			System.out.print("Qual opção deseja escolher(informe seu índice): ");
+			opcao = Integer.parseInt(input.nextLine());
+			
+			switch(opcao) {
+			
+				case 1:
+					Pessoa pes = new Pessoa();
+					System.out.println("-CADASTRO-DAS-PESSOAS-");
+					System.out.print("Informe o primeiro nome da pessoa: ");
+					pes.setNome(input.nextLine());
+					System.out.print("Informe o segundo nome da pessoa: ");
+					pes.setSobrenome(input.nextLine());
+					lista.add(pes);
+					System.out.println("CADASTRO FEITO!");
+					break;
+					
+		//==================================================
+				case 2:
+					if(lista.size() == 0) {
+						System.out.println("Nenhum cadastro de pessoas registrado!");
+					}else {
+						System.out.println("LISTA-DAS-PESSOAS-CADASTRADAS-");
+						for(Pessoa c : lista){
+							System.out.println("=====PESSOA "+(lista.indexOf(c)+1)+"=====");
+							System.out.print("Nome completo: "+c.getNome()+" "+c.getSobrenome()+"\n");
+						}
+					}
+					break;
+					
+	   //====================================================
+					
+				case 3: 
+					if(lista.size() == 0) {
+						System.out.println("Nenhum cadastro de pessoas registrado!");
+					}else {
+						System.out.print("Informe o índice que deseja excluir(1-"+lista.size()+"): ");
+						Integer nR = Integer.parseInt(input.nextLine())-1;
+						
+						if(nR <= lista.size()) {
+							lista.remove(nR.intValue());
+						}else {
+							System.out.println("O índice informado não existe");
+						}
+					}
+					break;
+					
+	   //====================================================
+					
+				case 0:
+					System.out.println("O PROGRAMA ACABOU!");
+					break;
+					
+	  //====================================================
+					
+				default:
+					System.out.println("O número informado não corresponde com as opções!");
+					break;
+			}
+		}while(opcao != 0);
+	}
+
+}
