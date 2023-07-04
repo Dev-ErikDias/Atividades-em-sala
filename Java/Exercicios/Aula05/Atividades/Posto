@@ -1,0 +1,36 @@
+package modelo;
+import java.util.List;
+
+public class Posto {
+	private Integer litrosGasolina;
+	private List<Integer> abastecimentosGasolina;
+	
+	public Boolean abastecer(Integer litros){
+		if(litros > litrosGasolina){
+			return false;
+		}else{
+			litrosGasolina -= litros;
+			this.abastecimentosGasolina.add(litros);
+			return true;
+		}
+	}
+	public void reporEstoque(Integer litros){
+		this.litrosGasolina += litros;
+	}
+	
+	
+	public Integer getLitrosGasolina(){
+		return litrosGasolina;
+	}
+	public void setLitrosGasolina(Integer litrosGasolina){
+		this.litrosGasolina = litrosGasolina;
+	}
+	public List<Integer> getAbastecimentosGasolina() {
+		return abastecimentosGasolina;
+	}
+	public void setAbastecimentosGasolina(List<Integer> abastecimentosGasolina) {
+		this.abastecimentosGasolina = abastecimentosGasolina;
+	}
+	
+	
+}
