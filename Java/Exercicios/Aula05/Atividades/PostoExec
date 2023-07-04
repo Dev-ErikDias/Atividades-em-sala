@@ -1,0 +1,59 @@
+package execucao;
+import java.util.ArrayList;
+import java.util.Scanner;
+import modelo.Posto;
+public class PostoExec {
+
+	public static void main(String[] args) {
+		Posto posto = new Posto();
+		posto.setLitrosGasolina(0);
+		posto.setAbastecimentosGasolina(new ArrayList<>());
+		Scanner input = new Scanner(System.in);
+		int opcao = 1;
+		int qR;
+		do{
+			System.out.println("++----------POSTO----------++");
+			System.out.println("||[1]Abastecer             ||");
+			System.out.println("||[2]Repor estoque         ||");
+			System.out.println("||[3]Listar abastecimentos ||");
+			System.out.println("||[0]Sair do programa      ||");
+			System.out.println("++-------------------------++");
+			System.out.print("\nInforme sua escolha: ");
+			opcao = Integer.parseInt(input.nextLine());
+			
+			switch(opcao) {
+				case 1:
+					System.out.print("Informe a quantidade de gasolina que será abastecida: ");
+					qR = Integer.parseInt(input.nextLine());
+					if(posto.abastecer(qR)){
+						System.out.println("Abastecimento feito com sucesso!!");
+					}else{
+						System.out.println("A quantidade de gasolina é mais do que a gasolina correspondente na bomba("+posto.getLitrosGasolina()+")!!");
+					}
+					break;
+					
+				case 2:
+					System.out.print("Informe a quantidade de gasolina que será adicionada na bomba: ");
+					qR = Integer.parseInt(input.nextLine());
+					posto.reporEstoque(qR);
+					System.out.println("Estoque atualizado com sucesso!!");
+					break;
+				
+				case 3:
+					Integer i = 1;
+					for(Integer a : posto.getAbastecimentosGasolina()){
+						System.out.print("-Abastecimento "+i+": "+a+" litros\n");
+						i++;
+					}
+					break;
+					
+				default:
+					System.out.println("Opção invalida!!");
+					break;
+			}
+					
+		}while(opcao != 0);
+		System.out.println("O PROGRAMA ACABOU!!");
+	}
+
+}
