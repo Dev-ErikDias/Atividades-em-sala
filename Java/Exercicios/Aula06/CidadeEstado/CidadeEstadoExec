@@ -1,0 +1,55 @@
+package execucao;
+import modelo.Estado;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Cidade;
+
+public class CidadeEstadoExec {
+
+	public static void main(String[] args) {
+		List<Cidade> lista = new ArrayList<>();
+		//Estados
+		Estado sc = new Estado();
+		sc.setNome("Santa Catarina");
+		sc.setSigla("SC");
+		
+		Estado pr = new Estado();
+		pr.setNome("Paraná");
+		pr.setSigla("PR");
+		
+		//Cidades
+		Cidade flo = new Cidade();
+		flo.setNome("Florianópolis");
+		flo.setQtdHabitantes(508826);
+		flo.setAltitude(3.00);
+		flo.setEstado(sc);
+		lista.add(flo);	
+		
+		Cidade blu = new Cidade();
+		blu.setNome("Blumenau");
+		blu.setQtdHabitantes(361855);
+		blu.setAltitude(21.00);
+		blu.setEstado(sc);
+		lista.add(blu);
+		
+		Cidade foz = new Cidade();
+		foz.setNome("Foz do Iguaçu");
+		foz.setQtdHabitantes(258248);
+		foz.setAltitude(164.00);
+		foz.setEstado(pr);
+		lista.add(foz);
+		
+		Cidade cas = new Cidade();
+		cas.setNome("Cascavel");
+		cas.setQtdHabitantes(332333);
+		cas.setAltitude(781.00);
+		cas.setEstado(pr);
+		lista.add(cas);
+		
+		for(Cidade c : lista){
+			System.out.println(c.dados());
+		}
+		
+	}
+
+}
