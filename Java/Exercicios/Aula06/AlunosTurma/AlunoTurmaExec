@@ -1,0 +1,36 @@
+package execucao;
+import modelo.Aluno;
+import modelo.Turma;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AlunoTurmaExec {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		Turma tur = new Turma();
+		tur.setCurso("Desenvolvimento de sistemas");
+		tur.setNome("2° T.D.S.");
+		tur.setAlunos(new ArrayList<Aluno>());
+		
+		for(int i = 1; i<= 5; i++){
+			Aluno al = new Aluno();
+			System.out.print("Informe o nome do aluno: ");
+			al.setNome(input.nextLine());
+			System.out.print("Informe a idade do aluno: ");
+			al.setIdade(Integer.parseInt(input.nextLine()));
+			al.setTurma(tur);
+			tur.adicionarAluno(al);
+		}
+		
+		System.out.println("Alunos do "+tur.getNome());
+		for(Aluno a : tur.getAlunos()){
+			System.out.println("----ALUNO "+(tur.getAlunos().indexOf(a)+1)+"----");
+			System.out.println("Nome: "+a.getNome());
+			System.out.println("Idade: "+a.getIdade());
+		}
+
+	}
+
+}
