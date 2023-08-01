@@ -1,0 +1,34 @@
+package modelo;
+import java.util.List;
+
+public class Time {
+	private String nome;
+	private String estado;
+	private List<Jogador> jogadores;
+	
+	public void adicionarJogador(Jogador jogador){
+		this.jogadores.add(jogador);
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	public List<Jogador> getJogadores() {
+		return jogadores;
+	}
+	public void setJogadores(List<Jogador> jogadores) {
+		this.jogadores = jogadores;
+	}
+	
+	
+}
