@@ -1,0 +1,43 @@
+package modelo;
+public class Cidade {
+	private String nome;
+	private Integer qtdHabitantes;
+	private Double altitude;
+	private Estado estado;
+	
+	public String dados() {
+		String dados = "A cidade de "+nome+", localizada no estado "+estado.getNome()+"-"+(estado.getSigla())+", possui "
+				+qtdHabitantes+" habitantes e uma altitude de "+altitude+" metros";
+		
+		return dados;
+	}
+	
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Integer getQtdHabitantes() {
+		return qtdHabitantes;
+	}
+	public void setQtdHabitantes(Integer qtdHabitantes) {
+		this.qtdHabitantes = qtdHabitantes;
+	}
+	public Double getAltitude() {
+		return altitude;
+	}
+	public void setAltitude(Double altitude) {
+		this.altitude = altitude;
+	}
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	
+	
+}
