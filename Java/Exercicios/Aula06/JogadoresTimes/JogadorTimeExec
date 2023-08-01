@@ -1,0 +1,63 @@
+package execucao;
+import modelo.Time;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Jogador;
+public class JogadorTimeExec {
+
+	public static void main(String[] args) {
+		List<Time> times = new ArrayList<>();
+		
+		
+		Time vas = new Time();
+		vas.setNome("Vasco da Gama");
+		vas.setEstado("Rio de Janeiro");
+		vas.setJogadores(new ArrayList<>());
+		times.add(vas);
+		
+		Time cor = new Time();
+		cor.setNome("Corinthians");
+		cor.setEstado("São Paulo");
+		cor.setJogadores(new ArrayList<>());
+		times.add(cor);
+		
+		Jogador ale = new Jogador();
+		ale.setNome("Alex Teixeira");
+		ale.setIdade(33);
+		ale.setPosicao("Atacante");
+		ale.setTime(vas);
+		vas.adicionarJogador(ale);
+		
+		Jogador mar = new Jogador();
+		mar.setNome("Marlon Gomes");
+		mar.setIdade(19);
+		mar.setPosicao("Meio Campista");
+		mar.setTime(vas);
+		vas.adicionarJogador(mar);
+		
+		Jogador cas = new Jogador();
+		cas.setNome("Cássio Ramos");
+		cas.setIdade(36);
+		cas.setPosicao("Goleiro");
+		cas.setTime(cor);
+		cor.adicionarJogador(cas);
+
+		Jogador ren = new Jogador();
+		ren.setNome("Renato Augusto");
+		ren.setIdade(35);
+		ren.setPosicao("Meio Campista");
+		ren.setTime(cor);
+		cor.adicionarJogador(ren);
+		
+		for(Time t : times ){
+			System.out.println("\n--JOGADORES DO "+t.getNome()+"--");
+			for(Jogador j : t.getJogadores()){
+				System.out.println("\n--JOGADOR "+(t.getJogadores().indexOf(j)+1)+"--");
+				System.out.println("Nome: "+j.getNome());
+				System.out.println("Idade: "+j.getIdade());
+				System.out.println("Posição: "+j.getPosicao());
+			}
+		}
+	}
+
+}
