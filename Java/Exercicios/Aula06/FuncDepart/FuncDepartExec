@@ -1,0 +1,41 @@
+package execucao;
+import modelo.Departamento;
+import modelo.Funcionario;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class FuncDepartExec {
+
+	public static void main(String[] args) {
+		List<Funcionario> lista = new ArrayList<>();
+		Scanner input = new Scanner(System.in);
+		
+		for(int i = 1; i<= 3; i++){
+			Funcionario fun = new Funcionario();
+			System.out.println("----FUNCIONARIO "+i+"----");
+			System.out.print("Informe o nome do funcionário: ");
+			fun.setNome(input.nextLine());
+			System.out.print("Informe o cargo do funcionário: ");
+			fun.setCargo(input.nextLine());
+			System.out.print("Informe o salário do funcionário: ");
+			fun.setSalario(Double.parseDouble(input.nextLine()));
+			Departamento depart = new Departamento();
+			System.out.print("Informe o nome do departamento: ");
+			depart.setNome(input.nextLine());
+			System.out.print("Informe o numero da sala do departamento: ");
+			depart.setNumeroSala(Integer.parseInt(input.nextLine()));
+			fun.setDepto(depart);
+			lista.add(fun);
+		}
+		
+		for(Funcionario f : lista){
+			System.out.println("-----FUNCIONARIO "+ (lista.indexOf(f)+1)+"-----");
+			System.out.println("Nome: "+ f.getNome());
+			System.out.println("Cargo: "+ f.getCargo());
+			System.out.println("Salário: R$"+ f.getSalario());
+			System.out.println("Departamento: "+f.getDepto().getNome());
+			System.out.println("Número da sala: "+f.getDepto().getNumeroSala());
+		}
+	}
+
+}
