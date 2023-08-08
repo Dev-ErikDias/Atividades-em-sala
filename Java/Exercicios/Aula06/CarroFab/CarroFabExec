@@ -1,0 +1,114 @@
+package execucao;
+import modelo.Carro;
+import modelo.Fabricante;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class CarroFabExec {
+
+	public static void main(String[] args) {
+		List<Fabricante> lista = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
+		
+		Scanner input = new Scanner(System.in);
+		
+		Fabricante vol = new Fabricante();
+		vol.setNome("Volkswagem");
+		vol.setSigla("VW");
+		lista.add(vol);
+		
+		Fabricante che = new Fabricante();
+		che.setNome("Chevrolet");
+		che.setSigla("GM");
+		lista.add(che);
+		
+		Fabricante fia = new Fabricante();
+		fia.setNome("Fiat");
+		fia.setSigla("F");
+		lista.add(fia);
+		
+		Fabricante ren = new Fabricante();
+		ren.setNome("Renault");
+		ren.setSigla("RN");
+		lista.add(ren);
+		
+		int opcao = 1;
+		
+		do{
+			System.out.println("++--------MENU--------++");
+			System.out.println("||[1]Cadastrar carro  ||");
+			System.out.println("||[2]Excluir carro    ||");
+			System.out.println("||[3]Listar carro     ||");
+			System.out.println("||[0]Sair do programa ||");
+			System.out.println("++--------------------++");
+			System.out.print("\nInforme a opção que deseja: ");
+			opcao = Integer.parseInt(input.nextLine());
+			
+			switch(opcao){
+					
+			case 1:
+				Carro car = new Carro();
+				lerCarro(car, lista, carros);
+				break;
+				
+			case 2:
+				excluirCarro(carros);
+				break;
+				
+			case 3:
+				listarCarro(carros);
+				
+			}
+			
+		}while(opcao != 0);
+		
+	}
+	
+	public static void lerCarro(Carro c, List<Fabricante> lista, List<Carro> carros) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Informe o modelo do carro: ");
+		c.setModelo(input.nextLine());
+		System.out.print("Informe o ano de fabricação do carro: ");
+		c.setAnoFab(Integer.parseInt(input.nextLine()));
+		
+		System.out.print("Informe o fabricante do carro (VW, GM, F, RN): "); 
+		String s = input.nextLine();
+		for(Fabricante fa : lista){
+		
+			if(s.equals(fa.getSigla())){
+				c.setFabricante(fa);
+				break;
+			}
+		}
+		carros.add(c);
+	}
+	
+	public static void excluirCarro(List<Carro> carros){
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Informe o índice do carro que deseja excluir: ");
+		int m = Integer.parseInt(input.nextLine());
+		
+		for(Carro car : carros){
+			if(m == carros.indexOf(car)){
+				carros.remove(m);
+				break;
+			}
+		}
+			
+	}
+
+	public static void listarCarro(List<Carro> carros) {
+		for(Carro c : carros){
+			System.out.println("++-----Carro "+(carros.indexOf(c)+1)+"-----++");
+			System.out.println("|| Modelo: "+c.getModelo());
+			System.out.println("|| Ano de Fabricação: "+c.getAnoFab());
+			System.out.println("|| Índice: "+carros.indexOf(c));
+			System.out.println("-------FABRICANTE-------");
+			System.out.println("|| Nome: "+c.getFabricante().getNome());
+			System.out.println("|| Sigla: "+c.getFabricante().getSigla());
+			System.out.println("++--------------------------------++\n");
+		}
+	}
+}
