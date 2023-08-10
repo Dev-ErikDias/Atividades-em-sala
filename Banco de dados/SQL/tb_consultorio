@@ -1,0 +1,42 @@
+create database db_consultorio;
+
+create table tb_convenio(
+	conv_id int not null auto_increment primary key,
+    conv_nome varchar(50) not null,
+    conv_fone char(11) not null,
+    conv_email varchar(50) not null
+);
+
+create table tb_paciente(
+	pac_id int not null auto_increment primary key,
+	pac_nome varchar(50) not null,
+    pac_datanasc date not null,
+    pac_sexo varchar(70) not null,
+    pac_fone char(11) not null,
+    pac_id_conv int,
+    foreign key (pac_id_conv) references tb_convenio (conv_id)
+);
+
+create table tb_especialidade(
+	esp_id int not null auto_increment primary key,
+    esp_nome varchar(50)
+);
+
+create table tb_medico(
+	med_id int not null auto_increment primary key,
+    med_crm int not null,
+    med_nome varchar(50) not null,
+    med_fone char(11) not null,
+    med_id_esp int,
+    foreign key (med_id_esp) references tb_especialidade (esp_id)
+);
+
+create table tb_consulta(
+	cons_data date not null,
+    cons_queixa varchar(150),
+    cons_prescricao varchar(150) not null,
+    cons_id_pac int,
+    cons_id_med int,
+    foreign key (cons_id_pac) references tb_paciente (pac_id),
+    foreign key (cons_id_med) references tb_medico (med_id)
+);
