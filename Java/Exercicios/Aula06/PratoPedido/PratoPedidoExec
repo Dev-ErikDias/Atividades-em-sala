@@ -1,0 +1,148 @@
+package execucao;
+import modelo.Prato;
+import modelo.Pedido;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class PratoPedidoExec {
+	
+	public static void main(String[] args) {
+		List<Pedido> pedidos = new ArrayList<>();
+		List<Prato> pratos = new ArrayList<>();
+		
+		Prato cam = new Prato();
+		cam.setNome("Camarão à Milanesa");
+		cam.setNumero(1);
+		cam.setValor(110.00);
+		pratos.add(cam);
+		
+		Prato piz = new Prato();
+		piz.setNome("Pizza Margherita");
+		piz.setNumero(2);
+		piz.setValor(80.00);
+		pratos.add(piz);
+		
+		Prato mac = new Prato();
+		mac.setNome("Macarrão à Carbonara");
+		mac.setNumero(3);
+		mac.setValor(60.00);
+		pratos.add(mac);
+		
+		Prato bif = new Prato();
+		bif.setNome("Bife à Parmegiana");
+		bif.setNumero(4);
+		bif.setValor(75.00);
+		pratos.add(bif);
+		
+		Prato ris = new Prato();
+		ris.setNome("Risoto ao Funghi");
+		ris.setNumero(5);
+		ris.setValor(70.00);
+		pratos.add(ris);
+		
+		menu(pratos, pedidos);
+	}
+	
+	public static void menu(List<Prato> pratos, List<Pedido> pedidos){
+		Scanner input = new Scanner(System.in);
+		int opcao = 0;
+		do{
+			System.out.println("++-----PEDIDO------++");
+			System.out.println("|[1] Cadastrar      |");
+			System.out.println("|[2] Cancelar       |");
+			System.out.println("|[3] Listar         |");
+			System.out.println("|[4] Total de vendas|");
+			System.out.println("|[0] Sair           |");
+			System.out.println("++-----------------++");
+			
+			System.out.print("Informe a ação que deseja fazer: ");
+			opcao = Integer.parseInt(input.nextLine());
+			
+			
+			switch(opcao) {
+			
+				case 1:
+					cadastrar(pratos, pedidos, input);
+					break;
+					
+				case 2:
+					excluir(pedidos, input);
+					break;
+					
+				case 3:
+					listar(pratos, pedidos);
+					break;
+					
+				case 4:
+					totalVendas(pedidos);
+					break;
+					
+				default:
+					System.out.println("A opção informada é inexistente");
+					menu(pratos, pedidos);
+			}
+			
+		}while(opcao != 0);
+		System.out.println("O PROGRAMA ACABOU!!");
+	}
+	
+	public static void cadastrar(List<Prato> pratos, List<Pedido> pedidos, Scanner input){
+		
+		int pedido;
+		
+		System.out.println("+-------------------------------------------------+");
+		System.out.println("| Número  |         Nome	    |VALOR (R$)   |");
+		System.out.println("|-------------------------------------------------|");
+		System.out.println("|    1    | Camarão à Milanesa      | 110,00      |");
+		System.out.println("|    2	  | Pizza Margherita        | 80,00       |");
+		System.out.println("|    3    | Macarrão à Carbonara    | 60,00       |");
+		System.out.println("|    4    | Bife à Parmegiana       | 75,00       |");
+		System.out.println("|    5    | Risoto ao Funghi        | 70,00       |");
+		System.out.println("+-------------------------------------------------+");
+		System.out.println("\n");
+		
+		System.out.print("Informe o número do prato que deseja pedir: ");
+		pedido = Integer.parseInt(input.nextLine());
+		
+		for(Prato p : pratos){
+			if(pedido == p.getNumero()){
+				Pedido ped = new Pedido();
+				System.out.print("Informe seu nome: ");
+				ped.setNomeCliente(input.nextLine());
+				System.out.print("Informe o nome do garçom: ");
+				ped.setNomeGarcom(input.nextLine());
+				ped.setPrato(p);
+				pedidos.add(ped);
+			}
+		}
+	}
+	
+	public static void listar(List<Prato> pratos, List<Pedido> pedidos){
+		for(Pedido pe : pedidos) {			
+			System.out.println("++--------PEDIDO "+ (pedidos.indexOf(pe)+1)+ "--------++");
+			System.out.println("|| Nome Cliente: "+ pe.getNomeCliente());
+			System.out.println("|| Nome Garçom: "+ pe.getNomeGarcom());
+			System.out.println("|| Prato: "+ pe.getPrato().getNome());
+			System.out.println("|| Valor: R$"+ pe.getPrato().getValor());
+			System.out.println("|| Índice: "+pedidos.indexOf(pe));
+			System.out.println("\n");
+		}
+	}
+	
+	public static void excluir(List<Pedido> pedidos, Scanner input){
+
+		System.out.print("Informe o índice do pedido que deseja excluir: ");
+		int ep = Integer.parseInt(input.nextLine());	
+		pedidos.remove(ep);
+	}
+	
+	public static void totalVendas(List<Pedido> pedidos){
+		float valorT = 0;
+		
+		for(Pedido p : pedidos){
+			valorT += p.getPrato().getValor();
+		}
+		System.out.println("O valor total das vendas foi de R$"+valorT);
+	}
+
+}
