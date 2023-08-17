@@ -1,0 +1,131 @@
+header{
+    background-color: lightsteelblue;
+    color: black;
+    height: 80px;
+}
+
+header h1{
+    position: absolute;
+    top: 0;
+    left: 30px;
+    padding: 10px;
+}
+
+nav{
+    position: absolute;
+    right: 50px;
+    top: 25px;
+}
+
+nav li{
+    display: inline;
+    padding: 10px;
+
+}
+
+.menu-item{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.menu-item:hover{
+    text-decoration: underline;
+}
+
+.principal{
+    display: inline;
+    text-align: center;
+}
+
+.imagem{
+    margin-left:635px;
+}
+
+.titulo-principal{
+    text-align: center;
+    display: absolute;
+    font-size: 25px;
+}
+
+.principal p{
+    font-size: 19px;
+    padding-top: 0px;
+    display: absolute;
+}
+
+.mapa{
+    text-align: center;
+    display: absolute;
+    font-size: 25px;
+}
+
+.mapa p{
+    font-size: 19px;
+    padding-top: 10px;
+}
+
+footer{
+    background-color: slategrey;
+    height: 100px;
+    text-align: center;
+}
+
+footer p{
+    color: white;
+    font-size: 15px;
+}
+
+footer img{
+    padding-top: 20px;
+}
+
+.passagens {
+	width: 940px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+
+.passagens li {
+	display: inline-block;
+	text-align: center;
+	width: 30%;
+	vertical-align: top;
+	margin: 0 1.5%;
+	padding: 30px 20px;
+	box-sizing: border-box;
+	border: 2px solid #000000;
+	border-radius: 10px;
+}
+
+.passagens li:hover {
+	border-color: #C78C19;
+}
+
+.passagens li:active {
+	border-color: #088C19;	
+}
+
+.passagens li:hover h2 {
+	font-size: 34px;
+}
+
+.passagens h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.passagem-descricao {
+	font-size: 18px;
+}
+
+.passagem-preco {
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.passagens img{
+    width: 200px;
+    height: 200px;
+}
