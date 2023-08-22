@@ -1,0 +1,47 @@
+package modelo;
+
+public class Jogador {
+	private String nome;
+	private Integer idade;
+	private String nacionalidade;
+	private String posicao;
+	
+	public String correr(){
+		String corre = "Corre em velocidade";
+		
+		return corre;
+	}
+	
+	public String chutar() {
+		String chute = "Ele chuta pro gol!!";
+		
+		return chute;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Integer getIdade() {
+		return idade;
+	}
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+	public String getNacionalidade() {
+		return nacionalidade;
+	}
+	public void setNacionalidade(String nacionalidade) {
+		this.nacionalidade = nacionalidade;
+	}
+	public String getPosicao() {
+		return posicao;
+	}
+	public void setPosicao(String posicao) {
+		this.posicao = posicao;
+	}
+	
+	
+}
