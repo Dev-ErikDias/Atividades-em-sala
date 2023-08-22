@@ -1,0 +1,27 @@
+package modelo;
+
+public class Defensor {
+	private Double altura;
+	
+	public String desarmar() {
+		String desarme = "Faz um desarme limpo no jogador";
+		
+		return desarme;
+	}
+	
+	public String cabecear(){
+		String cabeceio = "Faz o cabeceio pra fora da aréa";
+		
+		return cabeceio;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+	
+	
+}
