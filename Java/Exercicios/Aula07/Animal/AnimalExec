@@ -1,0 +1,42 @@
+package execucao;
+import modelo.Animal;
+import modelo.Gato;
+import modelo.Cachorro;
+public class AnimalExec {
+
+	public static void main(String[] args) {
+		/*
+		Animal animal = new Animal();
+		animal.setNome("Baby");
+		animal.setRaca("Coli");
+		System.out.println(animal.getDados());
+		*/
+		
+		Gato gato = new Gato();
+		gato.setNome("Erik");
+		gato.setRaca("A melhor");
+		System.out.println(gato.getDados());
+		gato.miar();
+		
+		System.out.println("\n");
+		Gato cat = new Gato();
+		gato.setNome("Vini");
+		gato.setRaca("Inferior");
+		System.out.println(gato.getDados());
+		gato.miar();
+		
+		System.out.println("\n");
+		Cachorro cachorro = new Cachorro();
+		cachorro.setNome("João");
+		cachorro.setRaca("Salsicha");
+		System.out.println(cachorro.getDados());
+		cachorro.latir();
+		
+		System.out.println("\n");
+		Cachorro dog = new Cachorro();
+		dog.setNome("Miriã");
+		dog.setRaca("Maltes");
+		System.out.println(dog.getDados());
+		dog.latir();
+	}
+}
