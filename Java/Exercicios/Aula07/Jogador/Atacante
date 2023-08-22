@@ -1,0 +1,22 @@
+package modelo;
+
+public class Atacante extends Jogador{
+	private Double vel;
+	
+	public String gol(){
+		String gol = "Que lindo gol ele faz";
+		
+		return gol;
+	}
+
+	public Double getVel() {
+		return vel;
+	}
+
+	public void setVel(Double vel) {
+		this.vel = vel;
+	}
+	
+	
+	
+}
