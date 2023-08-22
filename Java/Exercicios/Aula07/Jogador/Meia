@@ -1,0 +1,9 @@
+package modelo;
+
+public class Meia extends Atacante{
+	public String darAssis(){
+		String assist = "Lindo passe na aréa";
+		
+		return assist;
+	}
+}
