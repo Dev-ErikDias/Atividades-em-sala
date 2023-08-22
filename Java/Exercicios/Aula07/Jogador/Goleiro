@@ -1,0 +1,21 @@
+package modelo;
+
+public class Goleiro extends Jogador{
+	private Double altura;
+	
+	public String defender(){
+		String defesa = "Defendeu o goleiro!!";
+		
+		return defesa;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+	
+	
+}
