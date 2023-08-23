@@ -1,0 +1,49 @@
+create database db_Pedidos;
+
+use db_Pedidos;
+
+create table tb_cliente(
+	cli_id int not null auto_increment primary key,
+    cli_nome varchar(45) not null,
+    cli_endereco varchar(50),
+    cli_pais varchar(50),
+    cli_fone char(14) not null,
+    cli_datanasc date
+);
+alter table tb_cliente add column cli_regiao varchar(50);
+
+create table tb_fatura(
+	fat_id int not null auto_increment primary key,
+    fat_data_pedido date not null,
+    fat_subtotal float not null,
+    fat_desconto float,
+    fat_regiao varchar(55)
+);
+
+alter table tb_fatura add column fat_cli_id int;
+alter table tb_fatura add foreign key (fat_cli_id) references tb_cliente (cli_id);
+
+create table tb_produto(
+	pro_id int not null auto_increment primary key,
+    pro_nome varchar(45) not null,
+    pro_valorUni float not null,
+    pro_estoque varchar(50) not null,
+    pro_categoria varchar(45) not null,
+    pro_desconto float,
+    pro_subtotal float not null
+);
+
+create table tb_itensLinha(
+	item_id int not null auto_increment primary key,
+    item_preco float not null,
+    item_qtdade int not null,
+    item_precoestendido float,
+    item_nomeProduto varchar(50) not null,
+    item_totalestoque int not null,
+    item_data date not null,
+    item_idFatura int,
+    foreign key (item_idFatura) references tb_fatura (fat_id)
+);
+
+alter table tb_itensLinha add column id_produto int;
+alter table tb_itensLinha add foreign key (id_produto) references tb_produto (pro_id);
