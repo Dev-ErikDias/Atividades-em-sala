@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    Aula 1 - Javascript Exemplo 2 <br>
+    <script>
+        var numero;
+        numero = prompt("Informe um numero");
+
+        if(!isNaN(numero)){
+            if(numero>0)
+                console.log("O numero "+numero+" é positivo");
+            else if(numero < 0)
+                console.log("O numero "+numero+" é negativo");
+            else
+                console.log("O numero "+numero+" é neutro");
+        }
+        else
+            console.log(numero + " não é numero!");
+
+        var retorno = (numero > 0)?"numero positivo":"numero negativo";
+        console.log("Resultado usando operador ternário "+retorno);
+    </script>
+</body>
+</html>
