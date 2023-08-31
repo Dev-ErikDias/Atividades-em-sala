@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Aula 1 - Javascript Exemplo 3 <br>
+
+    <script>
+        var data = new Date();
+        var hora = data.getHours();
+        var min = data.getMinutes();
+        var sec = data.getSeconds();
+        document.write("Hora certa: "+hora+":"+min+":"+sec);
+
+        if(hora >= 5 && hora >= 12){
+            document.write("Bom dia!");
+        }
+        else if(hora >= 12 && min >= 18){
+            document.write("Boa tarde!");
+        }
+        else{
+            document.write("Boa noite!");
+        }
+    </script>
+</body>
+</html>
