@@ -1,0 +1,10 @@
+function parImpar(){
+    var numero = document.frAula.n1.value;
+    var rotulo = document.getElementById("resultado");
+    if(numero % 2 == 0){
+        var txt="par";
+    }else{
+        var txt="impar";
+    }
+    rotulo.innerHTML = '<h1> numero digitado é '+txt+'<h1>';
+}
