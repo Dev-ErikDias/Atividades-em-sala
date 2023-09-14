@@ -1,0 +1,39 @@
+var j = 1;
+jogo();
+function jogo(){
+    var na = Math.round(Math.random()*100);
+    var ni = prompt("Informe um numero de 0 a 100!")
+    var tent = 1;
+    var t = "";
+    document.write(`---JOGO ${j}---<br>`);
+    do{
+        if(ni <= 100 && ni > 0){
+            t += `[${ni}]`
+            if(ni < na){
+                document.write(`${tent}° tentativa: ${ni}<br>`);
+                ni = prompt(`O numero sorteado é maior que ${ni}! Tentativas: ${t}`);
+                tent++;
+            }
+            else if(ni > na){
+                document.write(`${tent}° tentativa: ${ni}<br>`);
+                ni = prompt(`O numero sorteado é menor que ${ni}! Tentativas: ${t}`);
+                tent++;
+            }
+        }else{
+            alert("O numero tem que ser entre 0 e 100");
+            ni = prompt("Informe um numero de 0 a 100!");
+        }
+    }while(ni != na);
+    alert(`VOCÊ ACERTOU O NUMERO COM ${tent} TENTATIVAS!! ERA O ${na}!!`);
+}
+do{
+    var c = confirm("Deseja jogar novamente?")
+    if(c){
+        j++;
+        jogo();
+    }
+    else{
+        console.log("GOOD BYE!!");
+        c = true;
+    }
+}while(c != true)
