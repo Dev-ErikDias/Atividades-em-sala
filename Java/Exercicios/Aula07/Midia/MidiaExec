@@ -1,0 +1,116 @@
+package execucao;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.CD;
+import modelo.Midia;
+import modelo.DVD;
+import java.util.Scanner;
+public class MidiaExec {
+
+	public static void main(String[] args) {
+		List<Midia> midias = new ArrayList<>();
+		Scanner input = new Scanner(System.in);
+		menu(midias, input);
+		
+	}
+	
+	public static void menu(List<Midia> midias, Scanner input) {
+		do {
+			System.out.println("--------MIDIAS--------");
+			System.out.println("|[1]Cadastrar CD     |");
+			System.out.println("|[2]Cadastrar DVD    |");
+			System.out.println("|[3]Remover midias   |");
+			System.out.println("|[4]Listar midias    |");
+			System.out.println("----------------------");
+			
+			System.out.print("Informe sua escolha: ");
+			int opcao = Integer.parseInt(input.nextLine());
+			switch(opcao) {
+				
+				case 1:	
+					String v;
+					if(midias.size() < 5) {						
+						setarCD(midias, input);
+					}else {
+						System.out.print("A lista está cheia (5 midias).Deseja remover algum?");
+						v = input.nextLine();
+						if(v == "sim") {
+							removerMidia(midias, input);
+						}else {
+							System.out.println("ENTÃO TA LEGAL!!");
+						}
+					}
+					break;
+					
+				case 2:
+					if(midias.size() < 5) {						
+						setarDVD(midias, input);
+					}else {
+						System.out.print("A lista está cheia (5 midias).Deseja remover algum?");
+						v = input.nextLine();
+						if(v == "sim") {
+							removerMidia(midias, input);
+						}else {
+							System.out.println("ENTÃO TA LEGAL!!");
+						}
+					}
+					break;
+						
+				case 3:
+					if(midias.size() > 0) {						
+						removerMidia(midias, input);
+					}else {
+						System.out.println("Não tem midia nenhuma na lista!!");
+					}
+					break;
+					
+				case 4:
+					if(midias.size() > 0) {						
+						listarMidias(midias);
+					}else {
+						System.out.println("Não tem midia nenhuma na lista!!");
+					}
+					break;
+					
+				default:
+					System.out.println("A Opção informada é inexistente!!");
+			}
+		}while(midias.size() <= 5);
+	}
+	
+	public static void setarCD(List<Midia> midias, Scanner input) {
+		CD cd = new CD();
+		System.out.print("Informe o nome do CD: ");
+		cd.setDescricao(input.nextLine());
+		System.out.print("Informe o preco dele:");
+		cd.setPrecoPago(Double.parseDouble(input.nextLine()));
+		midias.add(cd);
+	}
+	
+	public static void setarDVD(List<Midia> midias, Scanner input) {
+		DVD dvd = new DVD();
+		System.out.print("Informe o nome do DVD: ");
+		dvd.setDescricao(input.nextLine());
+		System.out.print("Informe o preco dele:");
+		dvd.setPrecoPago(Double.parseDouble(input.nextLine()));
+		midias.add(dvd);
+	}
+	
+	public static void removerMidia(List<Midia> midias, Scanner input) {
+		System.out.print("Informe o número da midia que deseja excluir: ");
+		int idx = Integer.parseInt(input.nextLine())-1;
+		if(idx >= 0 && idx <= midias.size()) {			
+			midias.remove(idx);
+		}else {
+			System.out.println("O número da midia não é valido!");
+			removerMidia(midias, input);
+		}
+	}
+	
+	public static void listarMidias(List<Midia> midias){
+		for(Midia m : midias){
+			System.out.println("------MIDIA "+(midias.indexOf(m)+1)+"------");
+			m.getDados();
+		}
+	}
+}
