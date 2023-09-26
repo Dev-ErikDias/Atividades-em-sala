@@ -1,0 +1,7 @@
+package modelo;
+
+public class DVD extends Midia{
+	public void getTipo() {
+		System.out.println("O tipo dessa midia é um DVD!!");
+	}
+}
