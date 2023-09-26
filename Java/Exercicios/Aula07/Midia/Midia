@@ -1,0 +1,32 @@
+package modelo;
+
+public abstract class Midia {
+	protected String descricao;
+	protected Double precoPago;
+	
+	public void getDados(){
+		System.out.println("Descrição: "+this.descricao+"\nPreco pago: "+this.precoPago);
+		getTipo();
+	}
+	
+	public abstract void getTipo();
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Double getPrecoPago() {
+		return precoPago;
+	}
+
+	public void setPrecoPago(Double precoPago) {
+		this.precoPago = precoPago;
+	}
+	
+	
+}
