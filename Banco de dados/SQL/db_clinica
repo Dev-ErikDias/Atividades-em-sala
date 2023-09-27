@@ -1,0 +1,73 @@
+create database db_clinica;
+
+use db_clinica;
+
+create table tb_ambulatorio(
+	nroa int primary key auto_increment,
+    andar int not null,
+    capacidade int not null
+);
+
+create table tb_medico(
+	codm int primary key auto_increment not null,
+    nome varchar(40) not null,
+    idade smallint not null,
+    especialidade char(20) not null,
+    CPF numeric(11) unique,
+    cidade varchar(30),
+    nroa int,
+    foreign key (nroa) references tb_ambulatorio (nroa)
+);
+
+create table tb_paciente(
+	codp int primary key auto_increment not null,
+    nome varchar(40) not null,
+    idade smallint not null,
+    cidade char(30),
+    CPF numeric(11) unique,
+    doenca varchar(40) not null
+);
+
+create table tb_funcionario(
+	codf int primary key auto_increment not null,
+    nome varchar(40) not null,
+    idade smallint not null,
+    cidade char(30),
+    CPF numeric(11) unique,
+    salario float not null,
+    cargo varchar(20) not null
+);
+
+create table tb_consulta(
+	codm int,
+    foreign key (codm) references tb_medico (codm),
+    codp int,
+    foreign key (codp) references tb_paciente (codp),
+    consData date not null,
+    consHora time not null
+);
+
+alter table tb_funcionario add column nroa int;
+alter table tb_paciente drop column doenca; 
+alter table tb_paciente add column doenca varchar(40) not null;
+alter table tb_funcionario drop column cargo;
+alter table tb_funcionario drop column nroa;
+
+insert into tb_ambulatorio (andar, capacidade) values (1, 30), (1, 50), (2, 40), (2, 25), (2, 55);
+insert into tb_medico (nome, idade, especialidade, CPF, cidade, nroa) values ("João", 40, "Ortopedia", 10000100000, "Florianópolis", 1), ("Maria", 42, "Traumatologia", 10000110000, "Blumenau", 2),
+("Pedro", 51, "Pediatria", 11000100000, "São José", 2), ("Carlos", 28, "Ortopedia", 11000110000, "Joinville", null), ("Marcia", 33, "Neurologia", 11000111000, "Biguaçu", 3);
+
+insert into tb_paciente (nome, idade, cidade, CPF, doenca)values ("Ana", 20, "Florianópolis", 20000200000, "gripe"), ("Paulo", 24, "Palhoca", 20000220000, "fratura"), ("Lucia", 30, "Biguaçu", 22000200000, "tendinite"),
+("Carlos", 28, "Joinville", 11000110000, "sarampo");
+
+insert into tb_funcionario (nome, idade, cidade, salario, CPF) values ("Rita", 32, "São José", 1200, 20000100000), ("Maria", 55, "Palhoca", 1220, 30000110000), ("Caio", 45, "Florianópolis", 1100, 41000100000),
+("Carlos", 44, "Florianópolis", 1200, 51000110000), ("Paula", 33, "Florianópolis", 2500, 61000111000);
+
+insert into tb_consulta (codm, codp, consData, conshora) values (1, 1, "20060612", '14:00'), (1, 4, "20060613", '10:00'), (2, 1, "20060613", '9:00'), (2, 2, "20060613", '11:00'), (2, 3, "20060614", '14:00'),
+(2, 4, "20060614", '17:00'), (3, 1, "20060619", '18:00'), (3, 3, "20060612", '10:00'), (3, 4, "20060619", '13:00'), (4, 4, "20060620", '13:00'), (4, 4, "20060622", '19:30');
+
+select *from tb_funcionario;
+select *from tb_medico;
+select *from tb_paciente;
+select *from tb_ambulatorio;
+select *from tb_consulta;
