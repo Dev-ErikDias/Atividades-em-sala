@@ -1,0 +1,18 @@
+package modelo;
+
+public class Ingresso {
+	protected Double valor;
+	
+	public Double getValorTotal(){
+		return valor;
+	}
+	
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	
+}
