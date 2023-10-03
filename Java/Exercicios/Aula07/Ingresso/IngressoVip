@@ -1,0 +1,19 @@
+package modelo;
+
+public class IngressoVip extends Ingresso{
+	protected Double valorAdd;
+	
+	public Double getValorTotal() {
+		return (this.valor+valorAdd);
+	}
+
+	public Double getValorAdd() {
+		return valorAdd;
+	}
+
+	public void setValorAdd(Double ValorAdd) {
+		valorAdd = ValorAdd;
+	}
+	
+	
+}
