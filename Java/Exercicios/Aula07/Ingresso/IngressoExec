@@ -1,0 +1,28 @@
+package execucao;
+import modelo.Ingresso;
+import modelo.IngressoCamarote;
+import modelo.IngressoVip;
+
+public class IngressoExec {
+
+	public static void main(String[] args) {
+		Ingresso ing = new Ingresso();
+		ing.setValor(12.00);
+		
+		IngressoVip ingVip = new IngressoVip();
+		ingVip.setValor(12.00);
+		ingVip.setValorAdd(10.00);
+		
+		IngressoCamarote ingCam = new IngressoCamarote();
+		ingCam.setValor(12.00);
+		ingCam.setValorAdd(10.00);
+		ingCam.setValorAddCama(20.00);
+		
+		System.out.println("Valor ingresso: R$"+ing.getValorTotal());
+		System.out.println("Valor ingresso VIP: R$"+ingVip.getValorTotal());
+		System.out.println("Valor ingresso VIP com camarote: R$"+ingCam.getValorTotal());
+
+
+	}
+
+}
