@@ -1,0 +1,19 @@
+package modelo;
+
+public class IngressoCamarote extends IngressoVip{
+	protected Double valorAddCama;
+	
+	public Double getValorTotal(){
+		return (super.getValorTotal()+valorAddCama);
+	}
+
+	public Double getValorAddCama() {
+		return valorAddCama;
+	}
+
+	public void setValorAddCama(Double valorAddCama) {
+		this.valorAddCama = valorAddCama;
+	}
+	
+	
+}
