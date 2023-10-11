@@ -1,0 +1,76 @@
+create database db_universidade;
+
+use db_universidade;
+
+create table tb_aluno(
+		alu_mat int not null primary key,
+        alu_nome varchar(50) not null,
+        alu_endereco varchar(50),
+        alu_cidade varchar(30)
+);
+
+create table tb_disciplina(
+	dis_cod char(3) not null primary key,
+    dis_nome varchar(255) not null,
+    dis_cargaHor int not null
+);
+
+create table tb_professor(
+	prof_cod int not null primary key,
+    prof_nome varchar(50) not null,
+    prof_endereco varchar(50),
+    prof_cidade varchar(30)
+);
+
+create table tb_turma(
+	cod_disc char(3),
+    foreign key (cod_disc) references tb_disciplina (dis_cod),
+    tur_cod int not null primary key,
+    tur_prof int,
+    foreign key (tur_prof) references tb_professor (prof_cod),
+    tur_ano int,
+    tur_hor time
+);
+
+create table tb_historico(
+	his_mat int,
+    foreign key (his_mat) references tb_aluno (alu_mat),
+    his_disc char(3),
+    foreign key (his_disc) references tb_turma (cod_disc),
+    his_tur int,
+    foreign key (his_tur) references tb_turma (tur_cod),
+    his_prof int,
+    foreign key (his_prof) references tb_turma (tur_prof),
+    his_ano int,
+    foreign key (his_ano) references tb_turma (tur_ano),
+    his_freq int not null,
+    his_nota char(1) not null
+);
+
+insert into tb_aluno (alu_mat, alu_nome, alu_endereco, alu_cidade) values 
+(2015010101, "Jose de Alencar", "Rua das Almas", "Natal"),
+(2015010102, "João José", "Ruy Carneiro", "João Pessoa"),
+(2015010103, "Maria Joaquina", "Rua Carrossel", "Recife"),
+(2015010104, "Maria das Dores", "Rua Das Ladeiras", "Fortaleza"),
+(2015010105, "Josué Claudino dos Santos", "Centro", "Natal"),
+(2015010106, "Josuélisson Claudino dos Santos", "Centro", "Natal");
+
+insert into tb_disciplina(dis_cod, dis_nome, dis_cargaHor) values
+("BD", "Banco de Dados", 100),
+("POO", "Programação Orientada à Objetos", 100),
+("WEB", "Autoria Web", 50),
+("ENG", "Engenharia de Software", 80)
+;
+
+insert into tb_professor(prof_cod, prof_nome, prof_endereco, prof_cidade) values 
+(212131, "Nickerson Ferreira", "Rua Manaíra", "João Pessoa"),
+(122135, "Adorilson BEzerra", "Avenida Salgado Filho", "Natal"),
+(192011, "Diego Oliveira", "Avenida Roberto Freire", "Natal")
+;
+
+insert into tb_turma(cod_disc, tur_cod, tur_prof, tur_ano, tur_hor) values
+("BD", 1, 212131, 2023, '11'), 
+("BD", 2, 212131, 2023, '13'),
+("POO", 1, 192011, 2023, '08'),
+("WEB", 1, 192011, 2023, '07'),
+("ENG", 1, 122135, 2023, '10');
