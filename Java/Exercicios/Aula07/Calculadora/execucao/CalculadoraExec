@@ -1,0 +1,77 @@
+package execucao;
+import java.util.Scanner;
+import modelo.Calculadora;
+import modelo.Divisao;
+import modelo.Multiplicacao;
+import modelo.Resto;
+import modelo.Soma;
+import modelo.Subtracao;
+
+public class CalculadoraExec {
+
+	public static void main(String[] args) {
+		int opcao = 1;
+		Scanner input = new Scanner(System.in);
+		menu(opcao, input);
+	}
+	
+	public static void menu(int opcao, Scanner input){
+		do {
+			System.out.println("++---CALCULADORA---++");
+			System.out.println("||[1]Soma          ||");
+			System.out.println("||[2]Subtração     ||");
+			System.out.println("||[3]Multiplicação ||");
+			System.out.println("||[4]Divisão       ||");
+			System.out.println("||[5]Resto         ||");
+			
+			System.out.print("Informe a operação: ");
+			
+			opcao = Integer.parseInt(input.nextLine());
+			
+			Calculadora s = null;
+			
+			switch(opcao) {
+				case 1:{
+					s = new Soma();
+					break;
+				}
+				case 2:{		
+					s = new Subtracao();
+					break;
+				}
+				case 3:{					
+					s = new Multiplicacao();
+					break;
+				}
+				case 4:{					
+					s = new Divisao();
+					break;
+				}
+				case 5:{					
+					s = new Resto();
+					break;
+				}
+			}
+			
+			if(opcao != 0) {				
+				Double n1;
+				Double n2;
+				System.out.print("Informe o primeiro valor: ");
+				n1 = Double.parseDouble(input.nextLine());
+				
+				System.out.print("Informe o segundo valor: ");
+				n2 = Double.parseDouble(input.nextLine());
+				
+				if((n1 != 0) && (n2 != 0)) {
+					s.setNumA(n1);
+					s.setNumB(n2);
+					System.out.println("Resultado: "+s.Calcular(n1, n2));
+				}else{
+					opcao = 0;
+				}
+			}
+		}while(opcao != 0);
+		System.out.println("Saiu do programa!!");
+	}
+
+}
