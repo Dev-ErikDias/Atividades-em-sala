@@ -1,0 +1,24 @@
+package modelo;
+
+public abstract class Calculadora {
+	protected Double numA;
+	protected Double numB;
+	
+	public abstract Double Calcular(Double numA, Double numB); 
+
+	public Double getNumA() {
+		return numA;
+	}
+
+	public void setNumA(Double numA) {
+		this.numA = numA;
+	}
+
+	public Double getNumB() {
+		return numB;
+	}
+
+	public void setNumB(Double numB) {
+		this.numB = numB;
+	}
+}
