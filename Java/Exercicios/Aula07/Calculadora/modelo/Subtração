@@ -1,0 +1,8 @@
+package modelo;
+
+public class Subtracao extends Calculadora{
+	
+	public Double Calcular(Double numA, Double numB){
+		return numA - numB;
+	}
+}
