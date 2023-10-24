@@ -1,0 +1,30 @@
+package modelo;
+
+public class CifraCesarM5 extends CifraCesar {
+	
+	private Integer chave = -5;
+	
+	//Métodos
+	public String criptografar(String texto) {
+		String retorno = "";
+		
+		return retorno;
+	}
+	
+	public String descriptografar(String texto) {
+		String retorno = "";
+		
+		return retorno;
+	}
+
+	public Integer getChave() {
+		return chave;
+	}
+
+	public void setChave(Integer chave) {
+		this.chave = chave;
+	}
+	
+	
+
+}
