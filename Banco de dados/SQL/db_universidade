@@ -32,6 +32,8 @@ create table tb_turma(
     tur_hor time
 );
 
+alter table tb_turma add index idx_ano (tur_ano);
+
 create table tb_historico(
 	his_mat int,
     foreign key (his_mat) references tb_aluno (alu_mat),
@@ -42,10 +44,11 @@ create table tb_historico(
     his_prof int,
     foreign key (his_prof) references tb_turma (tur_prof),
     his_ano int,
-    foreign key (his_ano) references tb_turma (tur_ano),
     his_freq int not null,
     his_nota char(1) not null
 );
+
+alter table tb_historico add foreign key (his_ano) references tb_turma (tur_ano);
 
 insert into tb_aluno (alu_mat, alu_nome, alu_endereco, alu_cidade) values 
 (2015010101, "Jose de Alencar", "Rua das Almas", "Natal"),
@@ -55,8 +58,9 @@ insert into tb_aluno (alu_mat, alu_nome, alu_endereco, alu_cidade) values
 (2015010105, "Josué Claudino dos Santos", "Centro", "Natal"),
 (2015010106, "Josuélisson Claudino dos Santos", "Centro", "Natal");
 
+
 insert into tb_disciplina(dis_cod, dis_nome, dis_cargaHor) values
-("BD", "Banco de Dados", 100),
+('BD', "Banco de Dados", 100),
 ("POO", "Programação Orientada à Objetos", 100),
 ("WEB", "Autoria Web", 50),
 ("ENG", "Engenharia de Software", 80)
@@ -69,8 +73,68 @@ insert into tb_professor(prof_cod, prof_nome, prof_endereco, prof_cidade) values
 ;
 
 insert into tb_turma(cod_disc, tur_cod, tur_prof, tur_ano, tur_hor) values
-("BD", 1, 212131, 2023, '11'), 
-("BD", 2, 212131, 2023, '13'),
-("POO", 1, 192011, 2023, '08'),
-("WEB", 1, 192011, 2023, '07'),
-("ENG", 1, 122135, 2023, '10');
+("BD", 1, 212131, 2023, '11:00'), 
+("BD", 2, 212131, 2023, '13:30'),
+("POO", 3, 192011, 2023, '08:10'),
+("WEB", 4, 192011, 2023, '07:50'),
+("ENG", 5, 122135, 2023, '10:20');
+
+
+update tb_disciplina
+set dis_nome = 'Banco de dados II'
+where dis_nome = 'Programação Orientada à Objetos';
+
+update tb_disciplina
+set dis_nome = 'DESENVOLVIMENTO MULTIMIDEA'
+where dis_nome = 'AUTORIA WEB';
+
+update tb_disciplina
+set dis_nome = 'Programação Mobile',
+	dis_cod = 'PM',
+    dis_cargaHor = 150
+where dis_cod = 'BD';
+
+update tb_turma
+set cod_disc = 'PM'
+where cod_disc = 'BD';
+
+update tb_aluno
+set alu_nome = 'Erik Dias'
+where alu_nome = 2015010101;
+
+update tb_aluno 
+set alu_nome = 'João Arthur'
+where alu_nome = 2015010102;
+
+update tb_aluno
+set alu_nome = 'Miriã Rocha'
+where alu_nome = 2015010103;
+
+update tb_aluno
+set alu_nome = 'Vinicius Gonçalves'
+where alu_nome = 2015010104;
+
+update tb_aluno
+set alu_nome = 'Lucas Conradi'
+where alu_nome = 2015010105;
+
+update tb_aluno
+set alu_nome = 'Gabriela'
+where alu_nome = 2015010106;
+
+update tb_professor
+set prof_nome = 'Alana Cunha',
+	prof_endereco = 'Rua Petropolis',
+    prof_cidade = 'Medianeira'
+where prof_nome = 212131;
+
+update tb_professor
+set prof_nome = 'Carlos Eduardo Nobrega',
+	prof_endereco = 'Rua Macapa',
+    prof_cidade = 'Foz do Iguaçu'
+where prof_nome = 122135;
+
+update tb_professor
+set prof_nome = 'Marcelo'
+where prof_nome = 192011;
+
