@@ -1,135 +1,185 @@
 create database db_universidade;
-
 use db_universidade;
 
 create table tb_aluno(
-    alu_mat int not null primary key,
-    alu_nome varchar(50) not null,
-    alu_endereco varchar(50),
-    alu_cidade varchar(30)
+    mat int not null primary key,
+    nome varchar(50) not null,
+    endereco varchar(50),
+    cidade varchar(30)
 );
 
 create table tb_disciplina(
-    dis_cod char(3) not null primary key,
-    dis_nome varchar(255) not null,
-    dis_cargaHor int not null
+    cod_disc char(3) not null primary key,
+    nome_disc varchar(255) not null,
+    carga_hor int not null
 );
 
-create table tb_professor(
-    prof_cod int not null primary key,
-    prof_nome varchar(50) not null,
-    prof_endereco varchar(50),
-    prof_cidade varchar(30)
+create table tb_professores(
+    cod_prof int not null primary key,
+    nome varchar(50) not null,
+    endereco varchar(50),
+    cidade varchar(30)
 );
 
 create table tb_turma(
     cod_disc char(3),
-    foreign key (cod_disc) references tb_disciplina (dis_cod),
-    tur_cod int not null primary key,
-    tur_prof int,
-    foreign key (tur_prof) references tb_professor (prof_cod),
-    tur_ano int,
-    tur_hor time
+    cod_turma int not null primary key,
+    cod_prof int,
+    ano int,
+    horario time
 );
 
-alter table tb_turma add index idx_ano (tur_ano);
+alter table tb_turma add index idx_ano (ano);
 
 create table tb_historico(
-    his_mat int,
-    foreign key (his_mat) references tb_aluno (alu_mat),
-    his_disc char(3),
-    foreign key (his_disc) references tb_turma (cod_disc),
-    his_tur int,
-    foreign key (his_tur) references tb_turma (tur_cod),
-    his_prof int,
-    foreign key (his_prof) references tb_turma (tur_prof),
-    his_ano int,
-    his_freq int not null,
-    his_nota char(1) not null
+    mat int,
+    cod_disc char(3),
+    cod_turma int,
+    cod_prof int,
+    ano int,
+    frequencia int not null,
+    nota char(1) not null
 );
 
-alter table tb_historico add foreign key (his_ano) references tb_turma (tur_ano);
+insert into tb_aluno (mat, nome, endereco, cidade) values 
+(2015010101, "Jose de Alencar", "RUA DAS ALMAS", "NATAL"),
+(2015010102, "Joao Jose", "AVENIDA RUY CARNEIRO", "Joao Pessoa"),
+(2015010103, "Maria Joaquina", "RUA CARROSSEL", "Recife"),
+(2015010104, "Maria das Dores", "RUA DAS LADEIRAS", "Fortaleza"),
+(2015010105, "Josue Claudino dos Santos", "Centro", "NATAL"),
+(2015010106, "Josuelisson Claudino dos Santos", "Centro", "NATAL");
 
-insert into tb_aluno (alu_mat, alu_nome, alu_endereco, alu_cidade) values 
-(2015010101, "Jose de Alencar", "Rua das Almas", "Natal"),
-(2015010102, "João José", "Ruy Carneiro", "João Pessoa"),
-(2015010103, "Maria Joaquina", "Rua Carrossel", "Recife"),
-(2015010104, "Maria das Dores", "Rua Das Ladeiras", "Fortaleza"),
-(2015010105, "Josué Claudino dos Santos", "Centro", "Natal"),
-(2015010106, "Josuélisson Claudino dos Santos", "Centro", "Natal");
-
-insert into tb_disciplina(dis_cod, dis_nome, dis_cargaHor) values
+insert into tb_disciplina(cod_disc, nome_disc, carga_hor) values
 ('BD', "Banco de Dados", 100),
-("POO", "Programação Orientada à Objetos", 100),
-("WEB", "Autoria Web", 50),
-("ENG", "Engenharia de Software", 80);
+('POO', "Programação com Acesso a Banco de Dados", 100),
+('WEB', "Autoria Web", 50),
+('ENG', "Engenharia de Software", 80);
 
-insert into tb_professor(prof_cod, prof_nome, prof_endereco, prof_cidade) values 
-(212131, "Nickerson Ferreira", "Rua Manaíra", "João Pessoa"),
-(122135, "Adorilson Bezerra", "Avenida Salgado Filho", "Natal"),
-(192011, "Diego Oliveira", "Avenida Roberto Freire", "Natal");
+insert into tb_professores(cod_prof, nome, endereco, cidade) values 
+(212131, "Nickerson Ferreira", "RUA MANAIRA", "Joao Pessoa"),
+(122135, "Adorilson Bezerra", "AVENIDA SALGADO FILHO", "NATAL"),
+(192011, "Diego Oliveira", "AVENIDA ROBERTO FREIRE", "NATAL");
 
-UPDATE tb_turma
-SET cod_disc = 'PM'
-WHERE cod_disc = 'BD';
+insert into tb_turma(cod_disc, cod_turma, cod_prof, ano, horario) values
+('BD', 1, 212131, 2023, '11:00'),
+('BD', 2, 212131, 2023, '13:00'),
+('POO', 3, 192011, 2023, '08:00'),
+('WEB', 4, 192011, 2023, '07:00'),
+('ENG', 5, 122135, 2023, '10:00');
 
-UPDATE tb_disciplina
-SET dis_nome = 'Banco de Dados II'
-WHERE dis_nome = 'Programação Orientada à Objetos';
+create index idx_mat_aluno on tb_aluno (mat);
+create index idx_cod_disc_disciplina on tb_disciplina (cod_disc);
+create index idx_cod_prof_professores on tb_professores (cod_prof);
+create index idx_cod_disc_turma on tb_turma (cod_disc);
+create index idx_cod_prof_turma on tb_turma (cod_prof);
+create index idx_mat_historico on tb_historico (mat);
+create index idx_cod_disc_historico on tb_historico (cod_disc);
+create index idx_cod_turma_historico on tb_historico (cod_turma);
+create index idx_cod_prof_historico on tb_historico (cod_prof);
+create index idx_ano_historico on tb_historico (ano);
 
-UPDATE tb_disciplina
-SET dis_nome = 'Desenvolvimento Multimídia',
-    dis_cod = 'AUT',
-    dis_cargaHor = 150
-WHERE dis_cod = 'WEB';
+update tb_professores
+set nome = 'Alana Cunha',
+    endereco = 'Rua Petropolis',
+    cidade = 'Medianeira'
+where cod_prof = 212131;
 
-UPDATE tb_aluno
-SET alu_nome = 'Erik Dias'
-WHERE alu_mat = 2015010101;
+update tb_professores
+set nome = 'Carlos Eduardo Nobrega',
+    endereco = 'Rua Macapa',
+    cidade = 'Foz do Iguacu'
+where cod_prof = 122135;
 
-UPDATE tb_aluno 
-SET alu_nome = 'João Arthur'
-WHERE alu_mat = 2015010102;
+update tb_disciplina
+set nome_disc = 'Banco de Dados II'
+where cod_disc = 'POO';
 
-UPDATE tb_aluno
-SET alu_nome = 'Miriã Rocha'
-WHERE alu_mat = 2015010103;
+update tb_disciplina
+set nome_disc = 'Desenvolvimento Multimidia'
+where cod_disc = 'WEB';
 
-UPDATE tb_aluno
-SET alu_nome = 'Vinicius Gonçalves'
-WHERE alu_mat = 2015010104;
+update tb_disciplina
+set nome_disc = 'Programação Mobile',
+    carga_hor = 150,
+    cod_disc = 'PM'
+where cod_disc = 'BD';
 
-UPDATE tb_aluno
-SET alu_nome = 'Lucas Conradi'
-WHERE alu_mat = 2015010105;
+delete from tb_turma
+where cod_disc = 'BD';
 
-UPDATE tb_aluno
-SET alu_nome = 'Gabriela'
-WHERE alu_mat = 2015010106;
+insert into tb_turma(cod_disc, cod_turma, cod_prof, ano, horario) values
+('PM', 1, 212131, 2023, '11:00'),
+('PM', 2, 212131, 2023, '13:00');
 
-UPDATE tb_professor
-SET prof_nome = 'Alana Cunha',
-    prof_endereco = 'Rua Petrópolis',
-    prof_cidade = 'Medianeira'
-WHERE prof_cod = 212131;
+update tb_aluno
+set nome = 'Erik Dias'
+where mat = 2015010101;
 
-UPDATE tb_professor
-SET prof_nome = 'Carlos Eduardo Nóbrega',
-    prof_endereco = 'Rua Macapá',
-    prof_cidade = 'Foz do Iguaçu'
-WHERE prof_cod = 122135;
+update tb_aluno
+set nome = 'Joao Arthur'
+where mat = 2015010102;
 
-UPDATE tb_professor
-SET prof_nome = 'Jefferson'
-WHERE prof_cod = 192011;
+update tb_aluno
+set nome = 'Miriã Rocha'
+where mat = 2015010103;
 
-CREATE INDEX idx_mat ON tb_aluno (alu_mat);
-CREATE INDEX idx_cod_disc ON tb_disciplina (dis_cod);
-CREATE INDEX idx_cod_prof ON tb_professor (prof_cod);
-CREATE INDEX idx_cod_disc_turma ON tb_turma (cod_disc);
-CREATE INDEX idx_cod_prof_turma ON tb_turma (tur_prof);
-CREATE INDEX idx_mat_historico ON tb_historico (his_mat);
-CREATE INDEX idx_cod_disc_historico ON tb_historico (his_disc);
-CREATE INDEX idx_cod_turma_historico ON tb_historico (his_tur);
-CREATE INDEX idx_cod_prof_historico ON tb_historico (his_prof);
-CREATE INDEX idx_ano_historico ON tb_historico (his_ano);
+update tb_aluno
+set nome = 'Vinicius Goncalves'
+where mat = 2015010104;
+
+update tb_aluno
+set nome = 'Lucas Conradi'
+where mat = 2015010105;
+
+update tb_aluno
+set nome = 'Gabriela'
+where mat = 2015010106;
+
+update tb_professores
+set nome = 'Joyce'
+where cod_prof = '212131';
+
+update tb_professores
+set nome = 'Itamar'
+where cod_prof = 122135;
+
+update tb_professores
+set nome = 'Jefferson'
+where cod_prof = 192011;
+
+insert into tb_historico (mat, cod_disc, cod_turma, cod_prof, ano, frequencia, nota) values
+(2015010101, 'PM', 1, 212131, 2023, 100, 'A'),
+(2015010101, 'POO', 3, 192011, 2023, 100, 'A'),
+(2015010101, 'WEB', 4, 192011, 2023, 100, 'A'),
+(2015010101, 'ENG', 5, 122135, 2023, 100, 'A'),
+
+(2015010102, 'PM', 2, 212131, 2023, 70, 'B'),
+(2015010102, 'POO', 3, 192011, 2023, 80, 'A'),
+(2015010102, 'WEB', 4, 192011, 2023, 75, 'B'),
+(2015010102, 'ENG', 5, 122135, 2023, 85, 'A'),
+
+(2015010103, 'PM', 2, 212131, 2023, 75, 'B'),
+(2015010103, 'POO', 3, 192011, 2023, 70, 'C'),
+(2015010103, 'WEB', 4, 192011, 2023, 85, 'A'),
+(2015010103, 'ENG', 5, 122135, 2023, 90, 'A'),
+
+(2015010104, 'PM', 1, 212131, 2023, 65, 'D'),
+(2015010104, 'POO', 3, 192011, 2023, 75, 'B'),
+(2015010104, 'WEB', 4, 192011, 2023, 70, 'C'),
+(2015010104, 'ENG', 5, 122135, 2023, 80, 'A'),
+
+(2015010105, 'PM', 1, 212131, 2023, 90, 'A'),
+(2015010105, 'POO', 3, 192011, 2023, 85, 'A'),
+(2015010105, 'WEB', 4, 192011, 2023, 70, 'B'),
+(2015010105, 'ENG', 5, 122135, 2023, 80, 'A'),
+
+(2015010106, 'PM', 2, 212131, 2023, 70, 'C'),
+(2015010106, 'POO', 3, 192011, 2023, 75, 'B'),
+(2015010106, 'WEB', 4, 192011, 2023, 85, 'A'),
+(2015010106, 'ENG', 5, 122135, 2023, 90, 'A');
+
+SELECT * FROM tb_aluno;
+SELECT * FROM tb_disciplina;
+SELECT * FROM tb_professores;
+SELECT * FROM tb_turma;
+SELECT * FROM tb_historico;
