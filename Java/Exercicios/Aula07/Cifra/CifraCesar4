@@ -14,17 +14,18 @@ public class CifraCesar4 extends CifraCesar {
 			
 			if(indice == -1) {
 				retorno += letra;
-			}
-			int Lp = indice + chave;
-			
-			if(Lp > alfabeto.length()) {
-				int dif = Lp - alfabeto.length();
+			}else {				
+				int Lp = indice + chave;
 				
-				char letraCrip = alfabeto.charAt(dif);
-				retorno += letraCrip;
-			}else if (Lp < alfabeto.length() && indice >= 0){
-				char letraCrip = alfabeto.charAt(Lp);
-				retorno += letraCrip;
+				if(Lp > alfabeto.length()) {
+					int dif = Lp - alfabeto.length();
+					
+					char letraCrip = alfabeto.charAt(dif);
+					retorno += letraCrip;
+				}else if (Lp < alfabeto.length()){
+					char letraCrip = alfabeto.charAt(Lp);
+					retorno += letraCrip;
+				}
 			}
 		}
 		
