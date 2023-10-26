@@ -8,11 +8,52 @@ public class CifraCesarM5 extends CifraCesar {
 	public String criptografar(String texto) {
 		String retorno = "";
 		
+		for(int i = 0; i< texto.length();i++) {
+			char letra = texto.charAt(i);
+			Integer indice = this.alfabeto.indexOf(letra);
+			
+			if(indice == -1) {
+				retorno += letra;
+			}else {				
+				int Lp = indice + chave;
+				
+				if(Lp < 0) {
+					char letraCrip = alfabeto.charAt(26+Lp);
+					retorno += letraCrip;
+				}else if (Lp >= 0){
+					char letraCrip = alfabeto.charAt(Lp);
+					retorno += letraCrip;
+				}
+			}
+		}
+		
 		return retorno;
 	}
 	
 	public String descriptografar(String texto) {
 		String retorno = "";
+		
+		for(int i = 0; i< texto.length();i++) {
+			char letra = texto.charAt(i);
+			Integer indice = this.alfabeto.indexOf(letra);
+			
+			if(indice == -1) {
+				retorno += letra;
+			}else {				
+				int Lp = indice - chave;
+				
+				if(Lp >= alfabeto.length()) {
+					int dif = Lp - alfabeto.length();
+					
+					char letraCrip = alfabeto.charAt(dif);
+					retorno += letraCrip;
+				}else if (Lp >= 0){
+					char letraCrip = alfabeto.charAt(Lp);
+					retorno += letraCrip;
+				}
+			}
+			
+		}
 		
 		return retorno;
 	}
@@ -24,6 +65,7 @@ public class CifraCesarM5 extends CifraCesar {
 	public void setChave(Integer chave) {
 		this.chave = chave;
 	}
+	
 	
 	
 
