@@ -13,18 +13,19 @@ public class CifraCesar8 extends CifraCesar {
 			Integer indice = this.alfabeto.indexOf(letra);
 			
 			if(indice == -1) {
-				retorno += " ";
-			}
-			
-			if((indice + chave) > alfabeto.length()) {
+				retorno += letra;
+			}else {				
 				int Lp = indice + chave;
-				int dif = Lp - alfabeto.length();
 				
-				char letraCrip = alfabeto.charAt(dif);
-				retorno += letraCrip;
-			}else if ((indice + chave) < alfabeto.length() && indice >= 0){
-				char letraCrip = alfabeto.charAt(indice + chave);
-				retorno += letraCrip;
+				if(Lp > alfabeto.length()) {
+					int dif = Lp - alfabeto.length();
+					
+					char letraCrip = alfabeto.charAt(dif);
+					retorno += letraCrip;
+				}else if (Lp < alfabeto.length()){
+					char letraCrip = alfabeto.charAt(Lp);
+					retorno += letraCrip;
+				}
 			}
 		}
 		
