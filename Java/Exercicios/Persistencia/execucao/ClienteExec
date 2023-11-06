@@ -1,0 +1,99 @@
+package execucao;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import dao.ClienteDAO;
+import modelo.ClientePF;
+
+public class ClienteExec {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner leitor = new Scanner(System.in);
+		
+		Integer opcao = null;
+		do {
+			System.out.println();
+			System.out.println("------MENU------");
+			System.out.println("[1] Inserir cliente pessoa física");
+			System.out.println("[2] Inserir cliente pessoa jurídica");
+			System.out.println("[3] Listar clientes");
+			System.out.println("[4] Buscar cliente");
+			System.out.println("[5] Excluir cliente");
+			System.out.println("[0] Sair");
+			
+			System.out.print("Informe a opção: ");
+			opcao = Integer.parseInt(leitor.nextLine());
+			
+			switch (opcao) {
+				case 1: 
+					inserirClientePF(leitor);
+					break;
+					
+				case 2: 
+					inserirClientePJ(leitor);
+					break;
+					
+				case 3: 
+					listarClientes();
+					break;
+					
+				case 4: 
+					buscarCliente(leitor);
+					break;
+					
+				case 5: 
+					excluirCliente(leitor);
+					break;
+					
+				case 0: 
+					System.out.println("Programa encerrado!");
+					break;
+					
+				default:
+					System.out.println("Opção inválida!");
+			} //Switch
+			
+		} while(opcao != 0);
+		
+		leitor.close();
+	}
+
+	//Métodos
+	private static void inserirClientePF(Scanner leitor) throws SQLException {
+		ClientePF cliPF = new ClientePF();
+		
+		
+		System.out.print("Informe o nome social: ");
+		cliPF.setNomeSocial(leitor.nextLine());
+		
+		System.out.print("Informe o email: ");
+		cliPF.setEmail(leitor.nextLine());
+		
+		System.out.print("Informe o nome: ");
+		cliPF.setNomePF(leitor.nextLine());
+		
+		System.out.print("Informe o CPF: ");
+		cliPF.setCpf(leitor.nextLine());
+		
+		ClienteDAO cliDAO = new ClienteDAO();
+		cliDAO.inserirCliente(cliPF);
+	}
+	
+	private static void inserirClientePJ(Scanner leitor) {
+		System.out.println("Inserir cliente PJ");
+	}
+	
+	private static void listarClientes() {
+		System.out.println("Listar clientes");
+	}
+	
+	private static void buscarCliente(Scanner leitor) {
+		System.out.println("Buscar clientes");
+	}
+	
+	private static void excluirCliente(Scanner leitor) {
+		System.out.println("Excluir clientes");
+	}
+
+}
