@@ -1,0 +1,38 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import modelo.Cliente;
+import modelo.ClientePF;
+import util.Conexao;
+
+public class ClienteDAO {
+	
+	public void inserirCliente(Cliente cliente) throws SQLException{
+		String sql = 
+				
+		"INSERT INTO clientes (tipo, nomeSocial, email, nome, cpf, razao_social, cnpj)"
+		+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		Connection conn = Conexao.getConexao();
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, cliente.getTipo());
+		ps.setString(2, cliente.getNomeSocial());
+		ps.setString(3, cliente.getEmail());
+		
+		if(cliente instanceof ClientePF) {		
+			ClientePF cliPF = (ClientePF) cliente;
+			
+			ps.setString(4, cliPF.getNomePF());
+			ps.setString(5, cliPF.getCpf());
+		}
+		
+		ps.setString(6, "");
+		ps.setString(7, "");
+		
+		ps.execute();
+	}
+}
