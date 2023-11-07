@@ -3,6 +3,7 @@ var lR,cR,lC,cC,posCasa, posRobo, comando=0;
 const robo = document.createElement("img");
 const casa = document.createElement("img");
 const col=8,lin=8;
+var rest = true; 
 
 casa.setAttribute('class', "casa");
 robo.setAttribute('class', "robo");
@@ -36,6 +37,7 @@ function criarTabela(){
 }
 
 function posicionarImagens(){
+  aumentarImagens();
    var vet=["abaixo.png","acima.png","direita.png","esquerda.png","vai.png",];
    const celula=document.getElementById('botoes');
    for(let i=0;i<vet.length;i++){
@@ -54,73 +56,73 @@ function posicionarImagens(){
     lC= Math.round(Math.random() * ((lin-1) - (lin/2)) + (lin/2));
     cC= Math.round(Math.random()* (col-1));
     posCasa=document.getElementById(lC+","+cC);
-    casa.src="img/casa.png"
+    casa.src="img/casa.png";
     posCasa.appendChild(casa);
 }
 
 function incluirComandos(bt){
-  celula = document.getElementById('comandos');
-  var i = parseInt(bt.id);
-
-  switch(i){
-    case 0:{
-      celula.innerHTML += 'Abaixo<br>';
-      vetComandos.push(i);
-      break;
-    }
-
-    case 1:{
-      celula.innerHTML += 'Acima<br>';
-      vetComandos.push(i);
-      break;
-    }
-
-    case 2:{
-      celula.innerHTML += 'Direita<br>';
-      vetComandos.push(i);
-      break;
-    }
-
-    case 3:{
-      celula.innerHTML += 'Esquerda<br>';
-      vetComandos.push(i);
-      break;
-    }
-
-    case 4: {
-      for (let i = 1; i <= vetComandos.length; i++) {
-        setTimeout(executarComandos, i * 500);
+    celula = document.getElementById('comandos');
+    var i = parseInt(bt.id);
+    
+      switch(i){
+      case 0:{
+        celula.innerHTML += 'Abaixo<br>';
+        vetComandos.push(i);
+        break;
       }
-      break;
-    }    
-  }
+      
+      case 1:{
+        celula.innerHTML += 'Acima<br>';
+        vetComandos.push(i);
+        break;
+      }
+      
+      case 2:{
+        celula.innerHTML += 'Direita<br>';
+        vetComandos.push(i);
+        break;
+      }
+      
+      case 3:{
+        celula.innerHTML += 'Esquerda<br>';
+        vetComandos.push(i);
+        break;
+      }
+      
+      case 4: {
+        for (let i = 1; i <= vetComandos.length; i++) {
+          setTimeout(executarComandos, i * 500);
+        }
+        break;
+      }    
+    }
 }
-  
+
 function executarComandos(){
-  var i = vetComandos[comando++];
-  switch(i){
-    case 0:{
-      movimentarRobo(++lR, cR);
-      break;
+    var i = vetComandos[comando++];
+    switch(i){
+      case 0:{
+        movimentarRobo(++lR, cR);
+        break;
+      }
+      
+      case 1:{
+        movimentarRobo(--lR, cR);
+        break;
+      }
+      
+      case 2:{
+        movimentarRobo(lR, ++cR);
+        break;
+      }
+      
+      case 3:{
+        movimentarRobo(lR, --cR);
+        break;
+      }
     }
-    
-    case 1:{
-      movimentarRobo(--lR, cR);
-      break;
-    }
-    
-    case 2:{
-      movimentarRobo(lR, ++cR);
-      break;
-    }
-    
-    case 3:{
-      movimentarRobo(lR, --cR);
-      break;
-    }
-  }
 }
-  
+
 function movimentarRobo(l, c){
   if(posRobo != posCasa){
     posRobo.innerHTML = "";
@@ -131,17 +133,63 @@ function movimentarRobo(l, c){
 }
 
 function verificarVitoria(comandoVez){
-  var status = document.getElementById('status');
-  
+  var res = "";
   if(posCasa == posRobo){
-    robo.style.width = "50px";
-    casa.style.width = "50px";
-    robo.style.height = "auto";
-    casa.style.height = "auto";
+    diminuirImagens();
+    if(comandoVez == vetComandos.length){
+      res = "Ganhou";
+      rest = false;
+      mostrarResposta(res);
+    }
   }else{
-    robo.style.width = "75px";
-    casa.style.width = "75px";
-    robo.style.height = "auto";
-    casa.style.height = "auto";
-  }  
+    if(robo.style.width == "50px"){
+      aumentarImagens();
+    }
+    if(comandoVez == vetComandos.length){
+      res = "Perdeu";
+      rest = false;
+      mostrarResposta(res);
+    }
+  }
+}
+
+function mostrarResposta(res){
+  var status = document.getElementById('status');
+  var recomeca = document.getElementById('recomeca');
+  status.innerHTML = res;
+  
+  recomeca.style.visibility = "visible";
+  recomeca.style.width = "100px";
+  recomeca.style.height = "40px";
+
+  status.style.visibility = "visible";
+  status.style.fontSize = "40px";
+}
+
+function recomecarJogo(){
+  comando = 0;
+  var status = document.getElementById('status');
+  vetComandos = [];
+
+
+  recomeca.style.visibility = "hidden";
+  recomeca.style.width = "0px";
+  status.style.visibility = "hidden";
+  status.style.fontSize = "0px";
+
+  var tabela = document.getElementsByTagName('table')[0];
+  if (tabela) {
+    tabela.parentNode.removeChild(tabela);
+  }
+  criarTabela();
+}
+
+function aumentarImagens(){
+  robo.style.width = "75px";
+  casa.style.width = "75px";
+}
+
+function diminuirImagens(){
+  robo.style.width = "50px";
+  casa.style.width = "50px";
 }
