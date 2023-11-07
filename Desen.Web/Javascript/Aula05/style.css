@@ -2,12 +2,38 @@ table{
   border: 1px solid white;
   margin: auto;
 }
+
 td{
   border: 1px solid lightslategray;
   width: 100px;
   height: 100px;
 }
+
 .casa, .robo{
   width: 75px;
   height: auto;
+}
+
+#recomeca{
+  visibility: hidden;
+  width: 0px;
+  height: auto;
+  background-color: lightsalmon;
+  border: 2px solid lightcoral;
+  font-weight: 700;
+}
+
+.resultado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#status{
+  visibility: hidden;
+  font-size: 0px;
+  color: black;
+  margin-bottom: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
