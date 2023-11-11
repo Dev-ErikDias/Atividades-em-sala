@@ -2,8 +2,7 @@ var vetComandos=[];
 var lR,cR,lC,cC,posCasa, posRobo, comando=0;
 const robo = document.createElement("img");
 const casa = document.createElement("img");
-const col=8,lin=8;
-var rest = true; 
+const col=8,lin=8; 
 
 casa.setAttribute('class', "casa");
 robo.setAttribute('class', "robo");
@@ -38,64 +37,64 @@ function criarTabela(){
 
 function posicionarImagens(){
   aumentarImagens();
-   var vet=["abaixo.png","acima.png","direita.png","esquerda.png","vai.png",];
-   const celula=document.getElementById('botoes');
-   for(let i=0;i<vet.length;i++){
-       const botao = document.createElement('img');
-       botao.setAttribute("id",i);
-       botao.setAttribute("onclick",'incluirComandos(this)');
-       botao.src = "img/"+vet[i];
-       celula.appendChild(botao);
-   }
+  var vet=["abaixo.png","acima.png","direita.png","esquerda.png","vai.png",];
+  const celula=document.getElementById('botoes');
+  for(let i=0;i<vet.length;i++){
+      const botao = document.createElement('img');
+      botao.setAttribute("id",i);
+      botao.setAttribute("onclick",'incluirComandos(this)');
+      botao.src = "img/"+vet[i];
+      celula.appendChild(botao);
+  }
 
-     lR= Math.round(Math.random() * (lin/2));
-     cR= Math.round(Math.random()* (col-1));
-     posRobo=document.getElementById(lR+","+cR);
-     robo.src="img/robo.png";
-     posRobo.appendChild(robo);
-    lC= Math.round(Math.random() * ((lin-1) - (lin/2)) + (lin/2));
-    cC= Math.round(Math.random()* (col-1));
-    posCasa=document.getElementById(lC+","+cC);
-    casa.src="img/casa.png";
-    posCasa.appendChild(casa);
+  lR= Math.round(Math.random() * ((lin/2)-1));
+  cR= Math.round(Math.random()* (col-1));
+  posRobo=document.getElementById(lR+","+cR);
+  robo.src="img/robo.png";
+  posRobo.appendChild(robo);
+  lC= Math.round(Math.random() * ((lin-1) - (lin/2)) + (lin/2));
+  cC= Math.round(Math.random()* (col-1));
+  posCasa=document.getElementById(lC+","+cC);
+  casa.src="img/casa.png";
+  posCasa.appendChild(casa);
 }
 
 function incluirComandos(bt){
-    celula = document.getElementById('comandos');
-    var i = parseInt(bt.id);
-    
-      switch(i){
-      case 0:{
-        celula.innerHTML += 'Abaixo<br>';
-        vetComandos.push(i);
-        break;
-      }
-      
-      case 1:{
-        celula.innerHTML += 'Acima<br>';
-        vetComandos.push(i);
-        break;
-      }
-      
-      case 2:{
-        celula.innerHTML += 'Direita<br>';
-        vetComandos.push(i);
-        break;
-      }
-      
-      case 3:{
-        celula.innerHTML += 'Esquerda<br>';
-        vetComandos.push(i);
-        break;
-      }
-      
-      case 4: {
-        for (let i = 1; i <= vetComandos.length; i++) {
-          setTimeout(executarComandos, i * 500);
-        }
-        break;
-      }    
+  var celula = document.getElementById('comandos');
+  var i = parseInt(bt.id);
+  
+    switch(i){
+    case 0:{
+      celula.innerHTML += 'Abaixo<br>';
+      vetComandos.push(i);
+      break;
     }
+    
+    case 1:{
+      celula.innerHTML += 'Acima<br>';
+      vetComandos.push(i);
+      break;
+    }
+    
+    case 2:{
+      celula.innerHTML += 'Direita<br>';
+      vetComandos.push(i);
+      break;
+    }
+    
+    case 3:{
+      celula.innerHTML += 'Esquerda<br>';
+      vetComandos.push(i);
+      break;
+    }
+    
+    case 4: {
+      for (let i = 1; i <= vetComandos.length; i++) {
+        setTimeout(executarComandos, i * 500);
+      }
+      break;
+    }   
+  }
 }
 
 function executarComandos(){
@@ -137,20 +136,23 @@ function verificarVitoria(comandoVez){
   if(posCasa == posRobo){
     diminuirImagens();
     if(comandoVez == vetComandos.length){
-      res = "Ganhou";
-      rest = false;
+      res = "O ROBO CHEGOU NA CASA!";
       mostrarResposta(res);
     }
   }else{
     if(robo.style.width == "50px"){
       aumentarImagens();
     }
-    if(comandoVez == vetComandos.length){
-      res = "Perdeu";
-      rest = false;
+    if(posRobo == null){
+      res = "O ROBO SE PERDEU!";
+      mostrarResposta(res);
+    }else if(comandoVez == vetComandos.length){
+      res = "O ROBO NÃO CHEGOU!";
       mostrarResposta(res);
     }
   }
+
+  console.log(posRobo);
 }
 
 function mostrarResposta(res){
