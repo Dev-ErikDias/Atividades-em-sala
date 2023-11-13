@@ -2,9 +2,9 @@ package execucao;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
 import dao.ClienteDAO;
 import modelo.ClientePF;
+import modelo.ClientePJ;
 
 public class ClienteExec {
 
@@ -78,10 +78,30 @@ public class ClienteExec {
 		
 		ClienteDAO cliDAO = new ClienteDAO();
 		cliDAO.inserirCliente(cliPF);
+		
+		System.out.println("Cliente físico inserido com sucesso!!");
 	}
 	
-	private static void inserirClientePJ(Scanner leitor) {
-		System.out.println("Inserir cliente PJ");
+	private static void inserirClientePJ(Scanner leitor) throws SQLException {
+		ClientePJ cliPJ = new ClientePJ();
+		
+		
+		System.out.print("Informe o nome social: ");
+		cliPJ.setNomeSocial(leitor.nextLine());
+		
+		System.out.print("Informe o email: ");
+		cliPJ.setEmail(leitor.nextLine());
+		
+		System.out.print("Informe a razão social: ");
+		cliPJ.setRazaoSocial(leitor.nextLine());
+		
+		System.out.print("Informe o CNPJ: ");
+		cliPJ.setCnpj(leitor.nextLine());
+		
+		ClienteDAO cliDAO = new ClienteDAO();
+		cliDAO.inserirCliente(cliPJ);
+		
+		System.out.println("Cliente júridico inserido com sucesso!!");
 	}
 	
 	private static void listarClientes() {
