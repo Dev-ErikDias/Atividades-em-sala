@@ -4,7 +4,7 @@ table{
 }
 
 td{
-  border: 1px solid lightslategray;
+  border: 1px solid blue;
   width: 100px;
   height: 100px;
 }
@@ -15,7 +15,7 @@ td{
 }
 
 .casaF{
-  width: 100px;
+  width: 90px;
 }
 
 #recomeca{
@@ -34,10 +34,17 @@ td{
   margin-bottom: 20px;
 }
 
+#jogada{
+  font-size: 0px;
+  visibility: hidden;
+  color: black;
+  font-weight: 300;
+}
+
 #status{
   visibility: hidden;
   font-size: 0px;
-  color: black;
+  color: green;
   margin-bottom: 15px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
