@@ -10,29 +10,35 @@ robo.setAttribute('class', "robo");
 function criarTabela(){
    var pai=document.getElementsByTagName('body')[0];
    var tabela=document.createElement('table');
+   
    for(let i=0;i<col;i++) {
        var tr = document.createElement('tr');
        for (let j = 0; j < lin; j++) {
            var td = document.createElement('td');
            td.setAttribute("id", i+","+j);
            tr.appendChild(td);
-       }
-       if (i === 0) {
-           var td = document.createElement('td');
-           td.setAttribute("rowspan", lin);
-           td.setAttribute("id", 'comandos');
-           tr.appendChild(td);
-       }
-       tabela.appendChild(tr);
-   }
-    var tr = document.createElement('tr');
-    var td = document.createElement('td');
-    td.setAttribute("colspan", col+1);
-    td.setAttribute("id", 'botoes');
-    tr.appendChild(td);
-    tabela.appendChild(tr);
-    pai.appendChild(tabela);
-    posicionarImagens();
+        }
+        if (i === 0) {
+          var td = document.createElement('td');
+          td.setAttribute("rowspan", lin);
+          td.setAttribute("id", 'comandos');
+          tr.appendChild(td);
+        }
+        tabela.appendChild(tr);
+  }
+  var tr = document.createElement('tr');
+  var td = document.createElement('td');
+  td.setAttribute("colspan", col);
+  td.setAttribute("id", 'botoes');
+  tr.appendChild(td);
+  tabela.appendChild(tr);
+  pai.appendChild(tabela);
+
+  var tdC = document.createElement('td');
+  tdC.setAttribute("id", "contador");
+  tr.appendChild(tdC);
+
+  posicionarImagens();
 }
 
 function posicionarImagens(){
@@ -46,7 +52,6 @@ function posicionarImagens(){
       botao.src = "img/"+vet[i];
       celula.appendChild(botao);
   }
-
   lR= Math.round(Math.random() * ((lin/2)-1));
   cR= Math.round(Math.random()* (col-1));
   posRobo=document.getElementById(lR+","+cR);
@@ -62,7 +67,8 @@ function posicionarImagens(){
 function incluirComandos(bt){
   var celula = document.getElementById('comandos');
   var i = parseInt(bt.id);
-  
+  console.log(vetComandos.length);
+
     switch(i){
     case 0:{
       celula.innerHTML += 'Abaixo<br>';
@@ -94,6 +100,14 @@ function incluirComandos(bt){
       }
       break;
     }   
+  }
+  if(i != 4){
+    var celulaC = document.getElementById("contador");
+    if(celulaC.innerHTML == ""){
+      celulaC.innerHTML += "Comandos: "+vetComandos.length;
+    }else{
+      celulaC.innerHTML = "Comandos: "+vetComandos.length;
+    }
   }
 }
 
@@ -160,7 +174,6 @@ function verificarVitoria(comandoVez){
     }
   }
   return false;
-  console.log(posRobo);
 }
 
 function mostrarResposta(res){
@@ -171,6 +184,9 @@ function mostrarResposta(res){
   recomeca.style.visibility = "visible";
   recomeca.style.width = "100px";
   recomeca.style.height = "40px";
+  if(res != "O ROBO CHEGOU NA CASA!"){
+    status.style.color = "red";
+  }
 
   status.style.visibility = "visible";
   status.style.fontSize = "40px";
