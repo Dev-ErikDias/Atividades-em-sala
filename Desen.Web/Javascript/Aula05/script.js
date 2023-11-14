@@ -127,8 +127,14 @@ function movimentarRobo(l, c){
     posRobo.innerHTML = "";
   }
   posRobo = document.getElementById(l+","+c);
-  verificarVitoria(comando);
-  posRobo.appendChild(robo);   
+  if(!verificarVitoria(comando)){
+    posRobo.appendChild(robo);   
+  }else{
+    var casaF = document.createElement("img");
+    casaF.setAttribute('class', "casaF");
+    casaF.src = "img/casaFuncionando.jpg";
+    posRobo.appendChild(casaF);
+  }
 }
 
 function verificarVitoria(comandoVez){
@@ -138,6 +144,8 @@ function verificarVitoria(comandoVez){
     if(comandoVez == vetComandos.length){
       res = "O ROBO CHEGOU NA CASA!";
       mostrarResposta(res);
+      posCasa.innerHTML = "";
+      return true;
     }
   }else{
     if(robo.style.width == "50px"){
@@ -151,7 +159,7 @@ function verificarVitoria(comandoVez){
       mostrarResposta(res);
     }
   }
-
+  return false;
   console.log(posRobo);
 }
 
