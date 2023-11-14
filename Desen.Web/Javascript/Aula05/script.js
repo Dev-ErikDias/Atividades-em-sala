@@ -44,13 +44,15 @@ function criarTabela(){
 function posicionarImagens(){
   aumentarImagens();
   var vet=["abaixo.png","acima.png","direita.png","esquerda.png","vai.png",];
+  var jogada = document.getElementById("jogada");
+  console.log(melhorJogada);
   const celula=document.getElementById('botoes');
   for(let i=0;i<vet.length;i++){
-      const botao = document.createElement('img');
-      botao.setAttribute("id",i);
-      botao.setAttribute("onclick",'incluirComandos(this)');
-      botao.src = "img/"+vet[i];
-      celula.appendChild(botao);
+    const botao = document.createElement('img');
+    botao.setAttribute("id",i);
+    botao.setAttribute("onclick",'incluirComandos(this)');
+    botao.src = "img/"+vet[i];
+    celula.appendChild(botao);
   }
   lR= Math.round(Math.random() * ((lin/2)-1));
   cR= Math.round(Math.random()* (col-1));
@@ -62,6 +64,9 @@ function posicionarImagens(){
   posCasa=document.getElementById(lC+","+cC);
   casa.src="img/casa.png";
   posCasa.appendChild(casa);
+  
+  var melhorJogada = Math.abs(lC - lR) + Math.abs(cC - cR);
+  jogada.innerHTML = "Melhor jogada: "+melhorJogada+" comandos!";
 }
 
 function incluirComandos(bt){
@@ -98,16 +103,13 @@ function incluirComandos(bt){
       for (let i = 1; i <= vetComandos.length; i++) {
         setTimeout(executarComandos, i * 500);
       }
+      jogada.innerHTML +=  "<br> Sua jogada: "+vetComandos.length+" comandos!";
       break;
     }   
   }
   if(i != 4){
     var celulaC = document.getElementById("contador");
-    if(celulaC.innerHTML == ""){
-      celulaC.innerHTML += "Comandos: "+vetComandos.length;
-    }else{
-      celulaC.innerHTML = "Comandos: "+vetComandos.length;
-    }
+    celulaC.innerHTML = "Comandos: "+vetComandos.length;
   }
 }
 
@@ -179,6 +181,7 @@ function verificarVitoria(comandoVez){
 function mostrarResposta(res){
   var status = document.getElementById('status');
   var recomeca = document.getElementById('recomeca');
+  var jogada = document.getElementById('jogada');
   status.innerHTML = res;
   
   recomeca.style.visibility = "visible";
@@ -188,18 +191,28 @@ function mostrarResposta(res){
     status.style.color = "red";
   }
 
+  jogada.style.visibility = "visible";
+  jogada.style.fontSize = "15px";
+  
+
   status.style.visibility = "visible";
   status.style.fontSize = "40px";
 }
 
 function recomecarJogo(){
   comando = 0;
+  
   var status = document.getElementById('status');
   vetComandos = [];
-
+  
 
   recomeca.style.visibility = "hidden";
   recomeca.style.width = "0px";
+
+  jogada.style.visibility = "hidden";
+  jogada.style.fontSize = "0px";
+
+  status.style.color = "green";
   status.style.visibility = "hidden";
   status.style.fontSize = "0px";
 
