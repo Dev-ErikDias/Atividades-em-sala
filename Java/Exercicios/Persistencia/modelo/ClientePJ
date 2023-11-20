@@ -10,6 +10,12 @@ public class ClientePJ extends Cliente {
 	public String getNome() {
 		return this.razaoSocial;
 	}
+	
+	public String getDados(){
+		String dados = "PJ: "+this.id+" | "+this.nomeSocial+" | "+this.email+" | "+this.razaoSocial+" | "+this.cnpj;
+		
+		return dados;
+	}
 
 	@Override
 	public String getNroDoc() {
