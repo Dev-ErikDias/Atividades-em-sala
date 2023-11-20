@@ -10,6 +10,7 @@ public abstract class Cliente {
 	public abstract String getNome();
 	public abstract String getNroDoc();
 	public abstract String getTipo();
+	public abstract String getDados();
 	
 	//GETs e SETs
 	public Integer getId() {
@@ -30,6 +31,5 @@ public abstract class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-		
-
+	
 }
