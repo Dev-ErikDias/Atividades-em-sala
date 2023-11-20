@@ -10,6 +10,12 @@ public class ClientePF extends Cliente {
 		return this.nomePF;
 	}
 	
+	public String getDados(){
+		String dados = "PF: "+this.id+" | "+this.nomeSocial+" | "+this.email+" | "+this.nomePF+" | "+this.cpf;
+		
+		return dados;
+	}
+	
 	public String getNroDoc() {
 		return this.cpf;
 	}
