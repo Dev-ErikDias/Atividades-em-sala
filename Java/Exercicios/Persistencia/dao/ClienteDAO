@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import modelo.Cliente;
 import modelo.ClientePF;
@@ -84,6 +85,58 @@ public class ClienteDAO {
 			listaClientes.add(cliente);
 		}
 		return listaClientes;
+	}
+	
+	public Cliente buscarCliente(Integer id) throws SQLException {
+		String sql = "SELECT * FROM clientes WHERE id = ?";
+		
+		Connection conn = Conexao.getConexao();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		ps.setInt(1, id);
+		
+		while(rs.next()) {
+			Cliente cliente;
+			Integer idCliente = rs.getInt("id");
+			if(idCliente.equals(id)){
+				String tipoCliente = rs.getString("tipo");
+				if(tipoCliente.equals("F")) {
+					cliente = new ClientePF();
+				}else {
+					cliente = new ClientePJ();
+				}
+				cliente.setId(rs.getInt("id"));
+				cliente.setNomeSocial(rs.getString("nomeSocial"));
+				cliente.setEmail(rs.getString("email"));
+				if(cliente instanceof ClientePF){
+					ClientePF cliPF = (ClientePF) cliente;
+					cliPF.setNomePF(rs.getString("nome"));
+					cliPF.setCpf(rs.getString("cpf"));
+				}else {
+					ClientePJ cliPJ = (ClientePJ) cliente;
+					cliPJ.setRazaoSocial(rs.getString("razao_social"));
+					cliPJ.setCnpj(rs.getString("cnpj"));
+				}
+				return cliente;
+			}
+			
+		}
+		return null;
+	}
+	
+	public void excluirCliente(Integer id) throws SQLException{
+		String sql = "DELETE * FROM clientes WHERE id = ?";
+		
+		Connection conn = Conexao.getConexao();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, id);
+		
+		
+		ps.execute();
+		
+		
 	}
 
 }
