@@ -122,12 +122,34 @@ public class ClienteExec {
 		}
 	}
 	
-	private static void buscarCliente(Scanner leitor) {
-		System.out.println("Buscar clientes");
+	private static void buscarCliente(Scanner leitor) throws SQLException {
+		ClienteDAO cliDAO = new ClienteDAO();
+
+		System.out.print("Informe o id do cliente: ");
+		Integer id = Integer.parseInt(leitor.nextLine());
+		
+		Cliente cliente = cliDAO.buscarCliente(id);
+		
+		if(cliente != null){
+			System.out.println(cliente.getDados());
+		}else {
+			System.out.println("O cliente não foi encontrado!");
+		}
 	}
 	
-	private static void excluirCliente(Scanner leitor) {
-		System.out.println("Excluir clientes");
+	private static void excluirCliente(Scanner leitor) throws SQLException {
+		ClienteDAO cliDAO = new ClienteDAO();
+		
+		System.out.print("Informe o id do cliente: ");
+		Integer id = Integer.parseInt(leitor.nextLine());
+		
+		Cliente cliente = cliDAO.buscarCliente(id);
+		
+		if(cliente != null) {
+			cliDAO.excluirCliente(id);
+		}else {
+			System.out.println("O cliente não foi encontrado!");
+		}
 	}
 
 }
