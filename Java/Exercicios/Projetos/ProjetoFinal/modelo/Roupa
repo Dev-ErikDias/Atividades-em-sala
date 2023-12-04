@@ -1,0 +1,63 @@
+package modelo;
+
+public class Roupa {
+	
+	protected Integer id;
+	protected Float preco;
+	protected String tipo;
+	protected String tamanho;
+	protected String modelo;
+	protected String cor;
+	protected String marca;
+	
+	public String getDados(){
+		String dados = "ID: "+this.id+" | Tipo: "+this.tipo+" | Modelo: "+this.modelo+" | Tamanho: "+this.tamanho+
+				" | Cor: "+this.cor+" | Marca: "+this.marca+ " | Preco: R$"+this.preco;
+		
+		return dados;
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Float getPreco() {
+		return preco;
+	}
+	public void setPreco(Float preco) {
+		this.preco = preco;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public String getTamanho() {
+		return tamanho;
+	}
+	public void setTamanho(String tamanho) {
+		this.tamanho = tamanho;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public String getCor() {
+		return cor;
+	}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+	public String getMarca() {
+		return marca;
+	}
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+}
