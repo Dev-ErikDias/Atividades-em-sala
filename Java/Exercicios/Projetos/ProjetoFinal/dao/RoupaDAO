@@ -1,0 +1,55 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.Roupa;
+import util.Conexao;
+
+public class RoupaDAO {
+
+	public void inserirRoupa(Roupa roupa) throws SQLException{
+		String sql = "INSERT INTO tb_roupa (tipo, modelo, tamanho, cor, marca, preco) VALUES (?, ?, ?, ?, ?, ?)";
+		
+		Connection conn = Conexao.getConexao();
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, roupa.getTipo());
+		ps.setString(2, roupa.getModelo());
+		ps.setString(3, roupa.getTamanho());
+		ps.setString(4, roupa.getCor());
+		ps.setString(5, roupa.getMarca());
+		ps.setFloat(6, roupa.getPreco());
+		
+		ps.execute();
+	}
+	
+	public List<Roupa> listarRoupa() throws SQLException{
+		List<Roupa> lista = new ArrayList<>();
+		
+		String sql = "SELECT * FROM tb_roupa";
+		
+		Connection conn = Conexao.getConexao();
+		PreparedStatement stm = conn.prepareStatement(sql);
+		ResultSet rs = stm.executeQuery();
+		
+		while(rs.next()) {
+			Roupa roupa = new Roupa();
+			roupa.setId(rs.getInt("id"));
+			roupa.setTipo(rs.getString("tipo"));
+			roupa.setModelo(rs.getString("modelo"));
+			roupa.setTamanho(rs.getString("tamanho"));
+			roupa.setMarca(rs.getString("marca"));
+			roupa.setCor(rs.getString("cor"));
+			roupa.setPreco(rs.getFloat("preco"));
+			
+			lista.add(roupa);
+		}
+		return lista;
+	}
+}
