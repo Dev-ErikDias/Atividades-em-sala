@@ -1,0 +1,91 @@
+package execucao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import dao.RoupaDAO;
+import modelo.Roupa;
+public class RoupaExec {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner input = new Scanner(System.in);
+		
+		int opcao;
+		do {
+			System.out.println("+------MENU------+");
+			System.out.println("[1]Inserir roupa");
+			System.out.println("[2]Listar roupa");
+			System.out.println("[3]Buscar roupa");
+			System.out.println("[4]Excluir roupa");
+			System.out.println("[0]Sair");
+			
+			System.out.print("Informe a opção: ");
+			opcao = Integer.parseInt(input.nextLine());
+			
+			switch(opcao) {
+				case 1:
+					inserirRoupa(input);
+					break;
+					
+				case 2:
+					listarRoupa(input);
+					break;
+					
+				case 3:
+					break;
+					
+				case 4:
+					break;
+					
+				default:
+					System.out.println("A opção informada é inválido!");
+					break;
+			}
+			
+		}while(opcao != 0);
+	}
+	
+	public static void inserirRoupa(Scanner input) throws SQLException{
+		Roupa roupa = new Roupa();
+		
+		System.out.print("Informe o tipo da roupa: ");
+		roupa.setTipo(input.nextLine());
+		
+		System.out.print("Informe o modelo da roupa: ");
+		roupa.setModelo(input.nextLine());
+		
+		System.out.print("Informe o tamanho da roupa: ");
+		roupa.setTamanho(input.nextLine());
+		
+		System.out.print("Informe a cor da roupa: ");
+		roupa.setCor(input.nextLine());
+		
+		System.out.print("Informe a marca da roupa: ");
+		roupa.setMarca(input.nextLine());
+		
+		System.out.print("Informe o preço da roupa: ");
+		roupa.setPreco(Float.parseFloat(input.nextLine()));
+		
+		RoupaDAO roupaDAO = new RoupaDAO();
+		
+		roupaDAO.inserirRoupa(roupa);
+	}
+	
+	public static void listarRoupa(Scanner input) throws SQLException{
+		RoupaDAO roupaDAO = new RoupaDAO();
+		List<Roupa> lista = roupaDAO.listarRoupa();
+		
+		for(Roupa r : lista) {
+			System.out.println(r.getDados());
+		}
+	}
+	
+	public static void buscarRoupa(){
+		
+	}
+	
+	public static void excluirRoupa(){
+		
+	}
+}
