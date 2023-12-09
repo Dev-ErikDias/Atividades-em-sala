@@ -33,9 +33,11 @@ public class RoupaExec {
 					break;
 					
 				case 3:
+					buscarRoupa(input);
 					break;
 					
 				case 4:
+					excluirRoupa(input);
 					break;
 					
 				default:
@@ -81,11 +83,32 @@ public class RoupaExec {
 		}
 	}
 	
-	public static void buscarRoupa(){
+	public static void buscarRoupa(Scanner input) throws SQLException{
+		RoupaDAO roupaDAO = new RoupaDAO();
 		
+		System.out.print("Informe o id da roupa: ");
+		Integer id = Integer.parseInt(input.nextLine());
+		
+		Roupa roupa = roupaDAO.buscarRoupa(id);
+		
+		if(roupa != null){
+			System.out.println(roupa.getDados());
+		}else {
+			System.out.println("A roupa não foi encontrada!");
+		}
 	}
 	
-	public static void excluirRoupa(){
+	public static void excluirRoupa(Scanner input) throws SQLException{
+		RoupaDAO roupaDAO = new RoupaDAO();
 		
+		System.out.print("Informe o id da roupa: ");
+		Integer id = Integer.parseInt(input.nextLine());
+		
+		
+		if(roupaDAO.buscarRoupa(id) != null) {
+			roupaDAO.excluirRoupa(id);
+		}else{
+			System.out.println("A roupa não foi encontrada!");
+		}
 	}
 }
