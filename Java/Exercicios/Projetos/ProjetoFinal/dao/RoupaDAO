@@ -35,8 +35,8 @@ public class RoupaDAO {
 		String sql = "SELECT * FROM tb_roupa";
 		
 		Connection conn = Conexao.getConexao();
-		PreparedStatement stm = conn.prepareStatement(sql);
-		ResultSet rs = stm.executeQuery();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {
 			Roupa roupa = new Roupa();
@@ -51,5 +51,43 @@ public class RoupaDAO {
 			lista.add(roupa);
 		}
 		return lista;
+	}
+	
+	public Roupa buscarRoupa(Integer id) throws SQLException{
+		String sql = "SELECT * FROM tb_roupa WHERE id = ?";
+		
+		Connection conn = Conexao.getConexao();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		
+		
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			Roupa roupa = new Roupa();
+			Integer idRoupa = rs.getInt("id");
+			if(idRoupa.equals(id)) {
+					roupa.setId(idRoupa);
+					roupa.setTipo(rs.getString("tipo"));
+					roupa.setModelo(rs.getString("modelo"));
+					roupa.setTamanho(rs.getString("tamanho"));
+					roupa.setCor(rs.getString("cor"));
+					roupa.setMarca(rs.getString("marca"));
+					roupa.setPreco(rs.getFloat("preco"));
+					return roupa;
+			}
+		}
+		return null;
+	}
+	
+	public void excluirRoupa(Integer id) throws SQLException{
+		String sql = "DELETE FROM tb_roupa WHERE id = ?";
+		
+		Connection conn = Conexao.getConexao();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, id);
+		ps.execute();
+		
 	}
 }
